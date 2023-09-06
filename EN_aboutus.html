@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TsukiyoIwa</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css_EN/style.css">
+    <link rel="stylesheet" href="css_EN/aboutus.css">
+</head>
+
+<body style="background-color: #f1f1f1;">
+    <div class="flex_div">
+        <div class="container">
+            <div class="content_box">
+                <div class="titlediv">
+                    <p class="content_p title">
+                        We want to share the deliciousness and charm of Japanese "crab cuisine" to everyone in Taiwan!
+                        Additionally, we want to provide the best dining experience in a tranquil atmosphere, allowing everyone to fully enjoy the exquisite dishes we offer.
+                </div>
+
+                <div class="deco_image"></div>
+            </div>
+
+            <div class="text_content">
+                <p class="content_p">Imagine a quiet spring night, with a gentle breeze and a clear mind. At such a moment, standing by the seashore, gazing at the vast ocean and the soft moonlight reflecting upon it. In such a serene setting, we want to provide our customers with a cozy and relaxing time and space to savor the finest cuisine.</p>
+                <br>
+                <p class="content_p">In our exceptional and comfortable setting, we want our customers to leisurely savor the delectable delicacies we offer, not just to satisfy their appetite but also to fill their hearts with contentment. With this profound aspiration, we named our restaurant "TsukiyoIwa".</p>
+                <br>
+                <p class="content_p">In order to offer satisfying and truly delicious "crab cuisine" to our customers, we never compromise on freshness and quality management. We insist on using only the freshest and most flavorful "crabs" directly delivered from their place of origin.</p>
+                <br>
+                <p class="content_p">Our skilled chefs, who are well-versed in the art of crab cuisine, meticulously prepare each dish with the utmost care and respect, envisioning the customers' expressions as they taste the dishes. The chefs thoughtfully combine seasonal vegetables and use various cooking styles, such as sashimi, shabu-shabu, grilling, and boiling, employing ingenious techniques to offer customers easily palatable and visually vibrant "crab cuisine," filling their hearts with satisfaction.</p>
+                <br>
+                <p class="content_p">Whether you are reuniting with family, dining with friends, going on a date, or conducting business affairs, be sure to visit TsukiyoIwa and share important moments in your life with your loved ones!</p>
+
+            </div>
+
+            <div class="content_box">
+                <div class="chef_image"></div>
+
+                <div class="speakdiv">
+                    <p class="content_p from">A Greeting from Chef Takashi Fukushima:</p>
+                    <p class="content_p speak">At all times, my focus is on our guests' experience, aiming to create a dining environment where they can relax comfortably. <br> Utilizing the culinary skills honed over the years, I strive to provide the best hospitality. It is my sincere wish that all our guests at Tsukiyo Iwa find the highest level of satisfaction in body, mind, and spirit.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="text_content" style="padding-top: 0; margin-bottom: 50px;">
+                <p class="content_p bold">Introduction of Head Chef-Takashi Fukushima:</p>
+                <div class="hline"></div>
+                <p class="content_p">Having deeply appreciated the excellence of Japanese cuisine from a young age, Chef Takashi Fukushima trained in renowned Kaiseki and Ryotei restaurants in Kyoto and Tokyo. He also obtained a license to handle Fugu (pufferfish) during his apprenticeship. With a strong desire to convey the deliciousness of "crab cuisine" to Taiwanese guests, he assumed the position of head chef at Tsukiyo Iwa</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!--TopDiv-->
+    <div>
+        <div class="top_div hide">
+            <button class="navBtn" id="open_nav" onclick="w3_open()">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--Title-->
+    <div class="logo_div">
+        <div class="main_logo" onclick="go_link('/EN_index.html')"></div>
+        <div id="page_name">About Us</div>
+    </div>
+
+    <!--Mask-->
+    <div id="mask" onclick="w3_close()"></div>
+
+    <!--NavBar Start-->
+    <nav id="navbar">
+        <div class="navbar_top">
+            <div class="nav_btn_container" id="nav_btn_container">
+                <div class="iconButton" style="background-image: url(/imgs/facebook.png);"
+                    onclick="go_link('https://www.facebook.com/tsukiyoiwa',true)"></div>
+                <div class="iconButton" style="background-image: url(/imgs/instagram.png);"
+                    onclick="go_link('https://www.instagram.com/tsukiyoiwa/',true)"></div>
+            </div>
+            <button class="navBtn" id="close_nav" onclick="w3_close()" style="display: none;">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+
+        <div class="navbar_list" id="navbar_list">
+            <div class="select_item" id="btn_about">
+                <a onclick="go_link('/EN_aboutus.html')">About Us</a>
+            </div>
+            <div class="navbar_item" id="btn_menu">
+                <a onclick="go_link('/EN_menu.html')">Menu</a>
+            </div>
+            <div class="navbar_item" id="btn_env">
+                <a onclick="go_link('/EN_enviroment.html')">Environment</a>
+            </div>
+            <div class="navbar_item" id="btn_news">
+                <a onclick="go_link('/EN_news.html')">News</a>
+            </div>
+            <div class="navbar_item" id="btn_info">
+                <a onclick="go_link('/EN_info.html')">Infomation</a>
+            </div>
+        </div>
+
+        <div class="navbar_bottom">
+            <button onclick="go_link('/EN_reservation.html')">Reservation</button>
+            <div class=" navbar_lan_sel">
+                <div><a href="/index.html" style="color: #6D6D6D;">中文</a></div>
+                <span class="nav_lan_center">|</span>
+                <div><a href="#">ENGLISH</a></div>
+            </div>
+        </div>
+    </nav>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/componets.js"></script>
+
+</html>

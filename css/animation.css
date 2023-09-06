@@ -1,0 +1,63 @@
+.to_nav_in {
+    animation: nav_in 0.8s cubic-bezier(.21, .17, .6, 1.01);
+    animation-fill-mode: forwards;
+}
+
+.to_nav_out {
+    animation: nav_out 0.5s cubic-bezier(.21, .17, .6, 1.01);
+    animation-fill-mode: forwards;
+}
+
+@keyframes nav_in {
+    from {
+        opacity: 0;
+        width: 360px;
+        border-bottom-left-radius: 300px;
+    }
+
+    to {
+        opacity: 1;
+        width: 480px;
+        border-bottom-left-radius: 0px;
+    }
+}
+
+@keyframes nav_out {
+    from {
+        opacity: 1;
+        width: 480px;
+    }
+
+    to {
+        opacity: 0;
+        width: 360px;
+    }
+}
+
+@media only screen and (max-width: 652px) {
+    @keyframes nav_in {
+        from {
+            opacity: 0;
+            width: 75%;
+            border-bottom-left-radius: 300px;
+        }
+
+        to {
+            opacity: 1;
+            width: 100%;
+            border-bottom-left-radius: 0px;
+        }
+    }
+
+    @keyframes nav_out {
+        from {
+            opacity: 1;
+            width: 100%;
+        }
+
+        to {
+            opacity: 0;
+            width: 75%;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TsukiyoIwa</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css_EN/style.css">
+    <link rel="stylesheet" href="css_EN/info.css">
+</head>
+
+<body style="background-color: #e7e7e7;">
+    <div class="flex_div">
+        <div class="container">
+            <div class="deco_image"></div>
+
+            <div class="content_box">
+                <div>
+                    <p class="content_p bold">Business Hours</p>
+                    <div class="hline"></div>
+                    <p class="content_p">Monday to Saturday (Closed on Sunday.)<br>
+                        Lunch: 11:30 AM - 2:00 PM<br>
+                        Dinner: 6:00 PM - 10:00 PM</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">Address</p>
+                    <div class="hline"></div>
+                    <p class="content_p">No. 9, Lane 25, Shuangcheng Street, Zhongshan District, Taipei City, 104, Taiwan</p>
+                    <div style="display: inline-block; width: 100%;">
+                        <img src="imgs\location.svg" alt="" class="location">
+                        <p class="content_p link" onclick="go_link('https://goo.gl/maps/K3HVWBQ58LcY5Jbc9',true)">
+                            GoogleMap</p>
+
+                    </div>
+                </div>
+
+                <div>
+                    <p class="content_p bold">Phone</p>
+                    <div class="hline"></div>
+                    <p class="content_p">(02)2585-9221</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">Email</p>
+                    <div class="hline"></div>
+                    <p class="content_p">info@tsukiyoiwa.com</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">Transportation Information</p>
+                    <div class="hline"></div>
+                    <p class="content_p">Approximately 6 minutes on foot from O10, Zhongshan Elementary School MRT  Station.<br>
+                        About a 10-minute drive from Taipei Songshan Airport</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">Parking Information</p>
+                    <div class="hline"></div>
+                    <p class="content_p">Dodohome Parking Lot: Intersection of Shuangcheng Street and Nong'an Street.<br>
+                        Dehui Parking Lot: Dehui Street, near the direction of Zhongshan North Road.</p>
+                </div>
+
+                <img class="parking" src="imgs\parkingEN.png" alt="parking">
+
+            </div>
+        </div>
+    </div>
+
+    <!--TopDiv-->
+    <div>
+        <div class="top_div hide">
+            <button class="navBtn" id="open_nav" onclick="w3_open()">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--Title-->
+    <div class="logo_div">
+        <div class="main_logo" onclick="go_link('/EN_index.html')"></div>
+        <div id="page_name">Infomation</div>
+    </div>
+
+    <!--Mask-->
+    <div id="mask" onclick="w3_close()"></div>
+
+    <!--NavBar Start-->
+    <nav id="navbar">
+        <div class="navbar_top">
+            <div class="nav_btn_container" id="nav_btn_container">
+                <div class="iconButton" style="background-image: url(/imgs/facebook.png);"
+                    onclick="go_link('https://www.facebook.com/tsukiyoiwa',true)"></div>
+                <div class="iconButton" style="background-image: url(/imgs/instagram.png);"
+                    onclick="go_link('https://www.instagram.com/tsukiyoiwa/',true)"></div>
+            </div>
+            <button class="navBtn" id="close_nav" onclick="w3_close()" style="display: none;">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+
+        <div class="navbar_list" id="navbar_list">
+            <div class="navbar_item" id="btn_about">
+                <a onclick="go_link('/EN_aboutus.html')">About Us</a>
+            </div>
+            <div class="navbar_item" id="btn_menu">
+                <a onclick="go_link('/EN_menu.html')">Menu</a>
+            </div>
+            <div class="navbar_item" id="btn_env">
+                <a onclick="go_link('/EN_enviroment.html')">Environment</a>
+            </div>
+            <div class="navbar_item" id="btn_news">
+                <a onclick="go_link('/EN_news.html')">News</a>
+            </div>
+            <div class="select_item" id="btn_info">
+                <a onclick="go_link('/EN_info.html')">Infomation</a>
+            </div>
+        </div>
+
+        <div class="navbar_bottom">
+            <button onclick="go_link('/EN_reservation.html')">Reservation</button>
+            <div class=" navbar_lan_sel">
+                <div><a href="/index.html" style="color: #6D6D6D;">中文</a></div>
+                <span class="nav_lan_center">|</span>
+                <div><a href="#">ENGLISH</a></div>
+            </div>
+        </div>
+    </nav>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/componets.js"></script>
+
+</html>

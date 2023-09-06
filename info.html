@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>月夜岩|日本正宗螃蟹懷石料理</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info.css">
+</head>
+
+<body style="background-color: #e7e7e7;">
+    <div class="flex_div">
+        <div class="container">
+            <div class="deco_image"></div>
+
+            <div class="content_box">
+                <div>
+                    <p class="content_p bold">營業時間</p>
+                    <div class="hline"></div>
+                    <p class="content_p">星期一 ~ 星期六（星期日公休）<br>
+                        中午時段 11:30 - 14:00<br>
+                        晚上時段 18:00 - 22:00</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">店家地址</p>
+                    <div class="hline"></div>
+                    <p class="content_p">(104)台北市中山區雙城街25巷9號</p>
+                    <div style="display: inline-block; width: 100%;">
+                        <img src="imgs\location.svg" alt="" class="location">
+                        <p class="content_p link" onclick="go_link('https://goo.gl/maps/K3HVWBQ58LcY5Jbc9',true)">GoogleMap</p>
+                        
+                    </div>
+                </div>
+
+                <div>
+                    <p class="content_p bold">聯絡電話</p>
+                    <div class="hline"></div>
+                    <p class="content_p">(02)2585-9221</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">電子郵件</p>
+                    <div class="hline"></div>
+                    <p class="content_p">info@tsukiyoiwa.com</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">交通資訊</p>
+                    <div class="hline"></div>
+                    <p class="content_p">捷運中山國小站徒步約6分鐘<br>
+                        距台北松山機場開車約10分鐘</p>
+                </div>
+
+                <div>
+                    <p class="content_p bold">停車資訊</p>
+                    <div class="hline"></div>
+                    <p class="content_p">嘟嘟房停車場:雙城街與農安街路口<br>
+                        德惠停車場:德惠街靠近中山北路方向</p>
+                </div>
+
+                <img class="parking" src="imgs\parking.png" alt="parking">
+
+            </div>
+        </div>
+    </div>
+
+    <!--TopDiv-->
+    <div>
+        <div class="top_div hide">
+            <button class="navBtn" id="open_nav" onclick="w3_open()">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--Title-->
+    <div class="logo_div">
+        <div class="main_logo" onclick="go_link('/')"></div>
+        <div id="page_name">店家資訊</div>
+    </div>
+
+    <!--Mask-->
+    <div id="mask" onclick="w3_close()"></div>
+
+    <!--NavBar Start-->
+    <nav id="navbar">
+        <div class="navbar_top">
+            <div class="nav_btn_container" id="nav_btn_container">
+                <div class="iconButton" style="background-image: url(/imgs/facebook.png);"onclick="go_link('https://www.facebook.com/tsukiyoiwa',true)"></div>
+                <div class="iconButton" style="background-image: url(/imgs/instagram.png);"onclick="go_link('https://www.instagram.com/tsukiyoiwa/',true)"></div>
+            </div>
+            <button class="navBtn" id="close_nav" onclick="w3_close()" style="display: none;">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+
+        <div class="navbar_list" id="navbar_list">
+            <div class="navbar_item" id="btn_about">
+                <a onclick="go_link('/aboutus.html')">關於我們</a>
+            </div>
+            <div class="navbar_item" id="btn_menu">
+                <a onclick="go_link('/menu.html')">料理˙美酒</a>
+            </div>
+            <div class="navbar_item" id="btn_env">
+                <a onclick="go_link('/enviroment.html')">用餐環境</a>
+            </div>
+            <div class="navbar_item" id="btn_news">
+                <a onclick="go_link('/news.html')">最新消息</a>
+            </div>
+            <div class="select_item" id="btn_info">
+                <a a href="#">店家資訊</a>
+            </div>
+        </div>
+
+        <div class="navbar_bottom">
+            <button onclick="go_link('/reservation.html')">訂位</button>
+            <div class=" navbar_lan_sel">
+            <div><a href="#">中文</a></div>
+            <span class="nav_lan_center">|</span>
+            <div><a href="/EN_index.html" style="color: #6D6D6D;">ENGLISH</a></div>
+        </div>
+        </div>
+
+    </nav>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/componets.js"></script>
+
+</html>

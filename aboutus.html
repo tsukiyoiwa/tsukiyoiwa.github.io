@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>月夜岩|日本正宗螃蟹懷石料理</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/aboutus.css">
+</head>
+
+<body style="background-color: #f1f1f1;">
+    <div class="flex_div">
+        <div class="container">
+            <div class="content_box">
+                <div class="titlediv">
+                    <p class="content_p title">想要和台灣的顧客<br>
+                        傳達日本「蟹料理」的美味及迷人之處！<br>
+                        並且，能讓顧客們從日常生活的喧囂中脫離<br>
+                        在沉靜的氣氛中細細地充分享受<br>
+                        品嘗我們提供的最佳料理</p>
+                </div>
+
+                <div class="deco_image"></div>
+            </div>
+
+            <div class="text_content">
+                <p class="content_p">試想，在寂靜的春夜下晚風習習、心情舒暢，此時停佇在海岸邊，望著遼闊的大海和朦朧而柔和的月光相照相映；沉靜於如此場景的同時，我們想要提供給在此用餐的重要顧客們，一個緩和而可以放鬆享用美食的時間與空間…在絕佳的舒適空間中從容並慎重地品味著珍饉佳餚，我們不只想要滿足顧客的口腹之慾，而是連同從心中滿溢出來的滿足感也想一併提供給顧客們…在如此的深切想望下</p>
+                <br>
+                <p class="content_p">我們將店名取做「月夜岩」( TSUKIYOIWA )。</p>
+                <br>
+                <p class="content_p">為了能奉上令人滿意、真正美味的「蟹料理」給顧客們，在新鮮度和品質管理的部分我們絕不妥協，堅持使用從產地直送、鮮味滿溢的「螃蟹」。熟諳「螃蟹」的主廚，在調理每一道料理的過程中，都用最慎重最恭敬的態度，一邊思想著顧客品嘗料理時的樣貌，一邊將此心情全意投注在料理中。主廚 不但用心組合搭配季節性時蔬食材，也透過生魚片、涮涮鍋、燒烤、水煮等等各樣式的烹飪型式，並利用巧奪天工的技巧，讓顧客能享用到容易入口、配色豐富鮮明的「蟹料理」，而充盈著心滿意足之臧。</p>
+                <br>
+                <p class="content_p">和您家人團聚、和好友一同用餐、或約會、生意上的往來等等，請一定要來月夜岩用餐，在此與重要的人分享您生命中重要的時間！</p>
+
+            </div>
+
+            <div class="content_box">
+                <div class="chef_image"></div>
+
+                <div class="speakdiv">
+                    <p class="content_p speak">不論任何時候，視線皆專注於賓客的感受上<br>
+                        致力於營造出賓客能悠然放鬆的用餐環境<br>
+                        活用長年鍛鍊出來的料理技術<br>
+                        提供最佳的待客之道。願來店的所有賓客們<br>
+                        皆能得到身心靈上的最高滿足
+                    </p>
+                    <p class="content_p from">-來自料理長的問候</p>
+                </div>
+
+            </div>
+
+            <div class="text_content" style="padding-top: 0; margin-bottom: 50px;">
+                <p class="content_p bold">料理長 福島隆史</p>
+                <div class="hline"></div>
+                <p class="content_p">年輕時深深感受日本料理的精湛之處，並在京都、東京等割烹以及料亭名店修業，並在修業其中取得了河豚處理資格執照。為了向台灣客人傳達「螃蟹料理」的美味之處，就任月夜岩的料理長一職。</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!--TopDiv-->
+    <div>
+        <div class="top_div hide">
+            <button class="navBtn" id="open_nav" onclick="w3_open()">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--Title-->
+    <div class="logo_div">
+        <div class="main_logo" onclick="go_link('/')"></div>
+        <div id="page_name">關於我們</div>
+    </div>
+
+    <!--Mask-->
+    <div id="mask" onclick="w3_close()"></div>
+
+    <!--NavBar Start-->
+    <nav id="navbar">
+        <div class="navbar_top">
+            <div class="nav_btn_container" id="nav_btn_container">
+                <div class="iconButton" style="background-image: url(/imgs/facebook.png);"onclick="go_link('https://www.facebook.com/tsukiyoiwa',true)"></div>
+                <div class="iconButton" style="background-image: url(/imgs/instagram.png);"onclick="go_link('https://www.instagram.com/tsukiyoiwa/',true)"></div>
+            </div>
+            <button class="navBtn" id="close_nav" onclick="w3_close()" style="display: none;">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+
+        <div class="navbar_list" id="navbar_list">
+            <div class="select_item" id="btn_about">
+                <a a href="#">關於我們</a>
+            </div>
+            <div class="navbar_item" id="btn_menu">
+                <a onclick="go_link('/menu.html')">料理˙美酒</a>
+            </div>
+            <div class="navbar_item" id="btn_env">
+                <a onclick="go_link('/enviroment.html')">用餐環境</a>
+            </div>
+            <div class="navbar_item" id="btn_news">
+                <a onclick="go_link('/news.html')">最新消息</a>
+            </div>
+            <div class="navbar_item" id="btn_info">
+                <a onclick="go_link('/info.html')">店家資訊</a>
+            </div>
+        </div>
+
+        <div class="navbar_bottom">
+            <button onclick="go_link('/reservation.html')">訂位</button>
+            <div class=" navbar_lan_sel">
+                <div><a href="#">中文</a></div>
+                <span class="nav_lan_center">|</span>
+                <div><a href="/EN_index.html" style="color: #6D6D6D;">ENGLISH</a></div>
+            </div>
+        </div>
+
+    </nav>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/componets.js"></script>
+
+</html>

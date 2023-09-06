@@ -1,0 +1,200 @@
+.flex_div{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 50px;
+    left: min(220px, 20vw);
+    right: 95px;
+}
+
+.container {
+    position: absolute;
+    display: block;
+    width: min(95%, 1000px);
+}
+
+.deco_image
+{
+    position: relative;
+    display: block;
+    top: -20px;
+    width: 100%;
+    height: 30vh;
+    z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/imgs/home2.jpg')
+}
+
+.mainBox{
+    position: relative;
+    display: block;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    z-index: 0;
+}
+
+.mainBox_p
+{
+    letter-spacing: .15em;
+    font-size: min(1.1em, 5vw);
+    font-family: 'Noto Serif TC', serif;
+}
+
+.mainBox_p.note
+{
+    margin-bottom: 8px;
+}
+.mainBox_p.money
+{
+    color: #FF8A00;
+    font-weight: 700;
+    margin: 0;
+}
+
+
+.mainBox_p.maxPeople
+{
+    color: #414141;
+    margin: 0;
+    font-size: min(1.0em, 4vw);
+}
+
+.mainBox_p.telephone
+{
+    color: #414141;
+    margin: 0;
+    font-size: min(1.0em, 4vw);
+    margin-top: 40px;
+    line-height: 2em;
+}
+
+.button_container
+{
+    width: min(100%, 400px);
+    margin: 0 auto;
+}
+
+.reservation_btn
+{
+    display: block;
+    background-color: #858585;
+    width: 100%;
+    height: 60px;
+    margin: 20px auto;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+
+}
+
+.reservation_btn:hover
+{
+    translate: 0px -5px;
+    transition-duration: 0.4s;
+    box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.4);
+    background-color: #FFA723;
+}
+
+.reservation_btn p
+{
+    position: relative;
+    display: inline-block;
+
+    letter-spacing: .15em;
+    font-size: min(1.1em, 5vw);
+    font-family: 'Noto Serif TC', serif;
+    line-height: 60px;
+    margin: 0;
+    left: 10px;
+    top: 0;
+}
+
+.reservation_icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.content_box {
+    display: block;
+    position: relative;
+    top: -20px;
+    left: 0;
+    right: 0;
+    padding-bottom: 40px;
+}
+
+.content_p
+{
+    margin: 15px 0 5px 0;
+    color: #6D6D6D;
+    font-size: 0.9em;
+    letter-spacing: .1em;
+    line-height: 1.5em;
+}
+
+.content_p.bold
+{
+    margin-top: 30px;
+    color: black;
+    font-weight: 900;
+    font-size: 1em;
+}
+
+.hline
+{
+    width: 100%;
+    height: 1px;
+    background-color: #D9D9D9;
+}
+
+.hline::after
+{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 2px;
+    background-color: #FFA723;
+}
+
+@media screen and (max-width: 652px) {
+    .flex_div{
+        top: 140px;
+        left: 0px;
+        right: 0px;
+    }
+
+    .container {
+        width: 100%;
+    }
+    .mainBox{
+
+        width: 80%;
+
+    }
+    .deco_image
+    {
+        height: 20vh;
+    }
+    .content_box {
+        top: -20px;
+        left: 20px;
+        right: 20px;
+    }
+}
