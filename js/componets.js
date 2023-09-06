@@ -1,3 +1,5 @@
+const jsonPath = "https://tsukiyoiwa.github.io/Json/"
+
 function w3_open() {
   $("#navbar").css("display", "block");
   $("#navbar").addClass("to_nav_in");
@@ -79,7 +81,7 @@ let hideSeason = false;
 
 function FetchAllMenu(_language)
 {
-  fetchfile = _language === 'CN' ? 'json/menu.json' : 'json/EN_menu.json';
+  fetchfile = jsonPath + (_language === 'CN' ? 'menu.json' : 'EN_menu.json');
   menu_buttonContainer = document.getElementsByClassName("buttonContainer")[0];
   menu_Buttons = document.getElementsByClassName("menu_button");
   console.log(menu_Buttons)
@@ -221,7 +223,7 @@ function callPhone(phoneNumber) {
 function CreateNews(_language) {
 
   let container = document.getElementById("container");
-  let _fetchfile = _language === 'CN' ? 'json/news.json' : 'json/EN_news.json';
+  let _fetchfile = jsonPath + (_language === 'CN' ? 'news.json' : 'EN_news.json');
 
   fetch(_fetchfile)
   .then(function (response) {
