@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>月夜岩|日本正宗螃蟹懷石料理</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservation.css">
+</head>
+
+<body style="background-color: #e7e7e7;">
+
+    <div class="flex_div">
+        <div class="container">
+            <div class="mainBox">
+                <p class="mainBox_p note">※需三天前預約</p>
+                <p class="mainBox_p telephone">可透過以下按鈕完成線上訂位亦可撥打電話訂位<br>
+                    訂位電話：02 2585-9221
+                    </p>
+                <div class="button_container">
+                    <div class="reservation_btn" onclick="callPhone('0225859221')">
+                        <div class="reservation_icon" style="background-image: url(/imgs/reservation_phone.svg);"></div>
+                        <p>電話訂位</p>
+
+                    </div>
+                    <div class="reservation_btn" onclick="go_link('https://reserve.toreta.in/tsukiyoiwa/#/',true)">
+                        <div class="reservation_icon" style="background-image: url(/imgs/reservation_online.svg);"></div>
+                        <p>線上訂位</p>
+                    </div>
+                </div>
+                <p class="mainBox_p maxPeople">※線上訂位限1~4位，5位以上請來電預約</p>
+
+            </div>
+            <div class="deco_image"></div>
+
+            <div class="content_box">
+
+                <p class="content_p bold">關於取消政策</p>
+                <div class="hline"></div>
+                <p class="content_p">月夜岩開店至今，有時會遇到一些來客貴賓同時預約許多餐廳，但等到預約當日時，沒有來店也沒有事前任何取消聯絡，我們覺得非常可惜。
+                    包含我們在內的很多餐廳，所有食材均需依照當日訂位人數細心提前準備，以及保留席次與安排服務人員。<br><br>
+                    因此希望各位來賓在預約訂位時，能夠先閱讀以下訂金以及取消政策後再行訂位，謝謝您的配合。</p>
+
+                <p class="content_p bold">關於預約訂位</p>
+                <div class="hline"></div>
+                <p class="content_p">月夜岩為了維護顧客的預約權益，預約訂位時會請您於一定期間內預付訂金。若於指定日期前未收到您訂金款項，將視為自動放棄該次預約權益，將席次留給其餘欲訂位貴賓。預約訂位後若有取消預約或是變更人數之需求，請務必於規定時間內以電話事前聯絡我們。</p>
+
+                <p class="content_p bold">關於訂金</p>
+                <div class="hline"></div>
+                <p class="content_p">每位酌收3,000元整</p>
+
+                <p class="content_p bold">關於訂位之取消以及人數變更</p>
+                <div class="hline"></div>
+                <p class="content_p">人數變更：<br>
+                    接受至預約日期前三個營業日17時為止之人數些微變更。之後則不再受理人數變更。<br>
+                    例：預約8200元套餐3名用餐，但當天臨時只有2位來店用餐且事前未有任何告知的情況，當日將會一樣提供3人份餐點以及收取3人份餐點金額。
+                </p>
+
+                <p class="content_p bold">日期變更或取消</p>
+                <div class="hline"></div>
+                <p class="content_p">預約人數1~4人時，含預約日期的前三日以內；<br>
+                    預約人數5人以上時，含預約日期的前五日以內(皆不含星期日)，無法受理預約日期變更或取消，並無法退還任何訂金。<br>
+                    若需變更預約日期或是取消預約，請在三天前(1~4人預約)或是五天前(5人以上預約)的17點以前來電連絡。<br>
+                      例：9/1時，欲變更9/3的用餐日期，視同取消不退還任何訂金。(1~4位預約)　<br>
+                      例：9/1時，對於原預約9/6的用餐日期，可受理日期變更或取消。(5位以上預約)<br>
+                </p>
+
+                <p class="content_p">*特殊需求之套餐預約，受理後即無法更改人數、日期或取消預約，也無法退還訂金，請特別注意。<br>
+                    *所有消費需另收10%服務費。<br>
+                    *本店全面禁菸(含電子菸)。<br>
+                    *用餐自備酒水酌收酒水服務費500元/瓶(不限種類)。<br>
+                    *同桌所有客人須選擇同一種套餐。<br>
+                    *請勿攜帶外食入店。並且請勿攜帶寵物入店。<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!--TopDiv-->
+    <div>
+        <div class="top_div hide">
+            <button class="navBtn" id="open_nav" onclick="w3_open()">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--Title-->
+    <div class="logo_div">
+        <div class="main_logo" onclick="go_link('/')"></div>
+        <div id="page_name">訂位</div>
+    </div>
+
+    <!--Mask-->
+    <div id="mask" onclick="w3_close()"></div>
+
+    <!--NavBar Start-->
+    <nav id="navbar">
+        <div class="navbar_top">
+            <div class="nav_btn_container" id="nav_btn_container">
+                <div class="iconButton" style="background-image: url(/imgs/facebook.png);"onclick="go_link('https://www.facebook.com/tsukiyoiwa',true)"></div>
+                <div class="iconButton" style="background-image: url(/imgs/instagram.png);"onclick="go_link('https://www.instagram.com/tsukiyoiwa/',true)"></div>
+            </div>
+            <button class="navBtn" id="close_nav" onclick="w3_close()" style="display: none;">
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+                <span class="lineTop"></span>
+            </button>
+        </div>
+
+        <div class="navbar_list" id="navbar_list">
+            <div class="navbar_item" id="btn_about">
+                <a onclick="go_link('/aboutus.html')">關於我們</a>
+            </div>
+            <div class="navbar_item" id="btn_menu">
+                <a onclick="go_link('/menu.html')">料理˙美酒</a>
+            </div>
+            <div class="navbar_item" id="btn_env">
+                <a onclick="go_link('/enviroment.html')">用餐環境</a>
+            </div>
+            <div class="navbar_item" id="btn_news">
+                <a onclick="go_link('/news.html')">最新消息</a>
+            </div>
+            <div class="navbar_item" id="btn_info">
+                <a onclick="go_link('/info.html')">店家資訊</a>
+            </div>
+        </div>
+
+        <div class="navbar_bottom">
+            <button a href="#">訂位</button>
+            <div class=" navbar_lan_sel">
+            <div><a href="#">中文</a></div>
+            <span class="nav_lan_center">|</span>
+            <div><a href="/EN_index.html" style="color: #6D6D6D;">ENGLISH</a></div>
+        </div>
+        </div>
+
+    </nav>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/componets.js"></script>
+
+</html>
