@@ -1,4 +1,4 @@
-const jsonPath = "https://tsukiyoiwa.github.io/Json/"
+const jsonPath = "https://tsukiyoiwa.com/Json/"
 
 function w3_open() {
   $("#navbar").css("display", "block");
