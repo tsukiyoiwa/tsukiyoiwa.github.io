@@ -14,7 +14,7 @@
         <div class="menu_container">
             <div class="select_container">
 
-                <div id="sub_button-container" style="display: none;">
+                <div class="sub_button-container" style="display: none;">
                     <button class="menu_button" onclick="ChangeMenu(0,0)"><span></span></button>
                 </div>
 
@@ -36,13 +36,14 @@
             <div id="menu_content-container">
 
                 <div class="menu_content mask" id="content">
+                    <div class="buttonContainer"></div>
                     <div class="menu_price">
                         <div class="menu_note">※Plus 10% service charge</div>
                         <p></p>
                     </div>
                     <img class="menu_image">
                     <div class="menu_content_info">
-                        <p class="menu_content-p" id="content_text0" style="color: crimson;">*Effective April 1st, there will be adjustments to the contents of our set menus, please refer to the News.</p>
+                        <p class="menu_content-p title" id="content_text_title"></p>
                         <p class="menu_content-p" id="content_text1"></p>
                         <p class="menu_content-p include" id="content_text2"></p>
                         <p class="menu_content-p note" id="content_text3"></p>
@@ -66,9 +67,7 @@
 
                 </div>
 
-                <div class="menu_space">
-                    <div class="buttonContainer"></div>
-                </div>
+                <div class="menu_space"></div>
 
                 <div class="menu_note_btm">※Plus 10% service charge</div>
                 <div class="menu_reservation" onclick="go_link('/reservation.html')">Reservation</div>
