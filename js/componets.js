@@ -189,6 +189,10 @@ function ChangeMenu(index, subindex) {
       content.classList.remove('notransition');
 
       //文字
+
+      document.getElementById("content_text_title").textContent = subindex !== undefined ? data.name : "";
+      document.getElementById("content_text_title").style.display = subindex !== undefined ? 'block' : "none";
+      
       document.getElementById("content_text1").textContent = data.text1;
       document.getElementById("content_text2").textContent = data.text2;
       document.getElementById("content_text3").textContent = data.text3;
