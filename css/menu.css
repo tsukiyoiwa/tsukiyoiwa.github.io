@@ -229,6 +229,14 @@
     padding: 0px;
 }
 
+.menu_content-p.title
+{
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bolder;
+    line-height: 1em;
+}
+
 .menu_content-p.wine
 {
     margin-top: 15px;
