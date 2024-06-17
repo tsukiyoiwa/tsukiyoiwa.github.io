@@ -4,20 +4,20 @@
         "name": "Limited-time",
         "seasons": [
             {
+                "name": "Banquet 「Yume」Kaiseki  with Live Ise Lobster & A5 Kagoshima Wagyu ",
+                "price": "NT$7,800 per person",
+                "text1": "When it comes to Tsukiyoiwa, crab is the first thing that comes to mind...\nWe are pleased to announce that Tsukiyoiwa will now be offering a new course that combines the highly popular and luxurious ingredients: live Ise lobster and A5-grade Kagoshima beef, alongside our famous crab dishes.\nOur head chef, Fukushima, is not just a crab specialist; he is a master of Japanese kaiseki cuisine with many years of training in Kyoto. This expert chef uses his exceptional skills to create a perfect harmony between the unique tenderness and sweetness of live Ise lobster and the rich flavor and texture of A5-grade Kagoshima beef, bringing out the best of both ingredients.\nWe invite you to indulge in our new course, crafted with the utmost care by Chef Fukushima, and savor the exquisite flavors of these carefully selected premium ingredients from both the sea and the land.\n",
+                "text2": "「「Yume」Kaiseki  with Live Ise Lobster & A5 Kagoshima Wagyu」\nPrice: 7,800 NTD/person \nSupply period: From Thursday, June 20th～",
+                "text3": ,
+                "image": "/imgs/menu/M12.jpg"
+            },
+            {
                 "name": "Banquet Kaiseki with Live King Crab",
                 "price": "NT$8,800 per person",
                 "text1": "Looking for an excellent venue for group dining? Why not taste our kaiseki with live king crab!\n\nWith the significant increase in dining-out demand worldwide after the end of the COVID-19 pandemic, the cost of ingredients continues to rise. Among them, the price increase and unstable supply of king crab are particularly noticeable. However, in order to let our guests to enjoy king crab at reasonable prices as much as possible, we have introduced this special course. Welcome to Tsukiyoiwa to enjoy the deliciousness of king crab.\n\nWhether it's a family gathering, a dinner with friends, or a business banquet, we can provide you with a warm and comfortable dining environment and a first-class culinary experience. At Tsukiyoiwa you can relax and enjoy a wonderful time with your loved ones or share delicious food with important business partners, and enjoy a pleasant dining experience.",
                 "text2": "「Banquet Kaiseki with Live King Crab」\nPrice: 8,800 NTD/person (minimum 4 people)\nSupply period: From April 22nd～",
                 "text3": "*This course does not include private chef service\n*The content of the course is the same as the original 「Kaiseki with Live King Crab」 priced at 9,800 NTD/person.",
                 "image": "/imgs/menu/M10.jpg"
-            },
-            {
-                "name": "Kaiseki with Live Japanese Mitten Crab",
-                "price": "NT$7,200 per person",
-                "text1": "To satisfy the taste buds of gourmets, Tsukiyoiwa has specially introduced live Japanese mitten crab during the months of April and May, offering a limited-time course called 「Kaiseki with Live Japanese Mitten Crab」 Compared to snow crabs and king crabs, thesecrabs may be smaller in size, but their rich crab miso provides a deeply satisfying taste sensation when savored. We recommend pairing the crab miso with the crab meat for the ultimate indulgence.\n\nPlease note that the supply of live Japanese mitten crabs is limited, so we encourage you to seize the opportunity and make your reservations early to savor the highest-grade Japanese mitten crabs from Japan!",
-                "text2": "「Kaiseki with Live Japanese Mitten Crab\nPrice: 7,200 NTD/ per person\nSupply period: From April 1st to mid-May",
-                "text3": "",
-                "image": "/imgs/menu/M11.jpg"
             }
         ]
     },
