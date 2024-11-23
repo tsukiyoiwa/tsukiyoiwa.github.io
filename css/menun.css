@@ -361,21 +361,21 @@
     position: relative;
     /* 作為關閉按鈕的定位參考 */
     width: 600px;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     max-height: 90vh;
     background: white;
     overflow: hidden;
     /* 隱藏內容溢出 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     padding: 5px;
-
+    margin: 5px;
 }
 
 .modal-body {
     max-height: 90vh;
     /* 設置最大高度，與 .modal-content 一致 */
     overflow-y: auto;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     /* 允許垂直滾動 */
 }
 
@@ -386,16 +386,16 @@
     /* 距離 .modal-content 頂部 10px */
     right: 10px;
     /* 距離 .modal-content 右側 10px */
-    font-size: 24px;
+    font-size: 30px;
     cursor: pointer;
     background: rgb(0, 0, 0);
     color: #e7e7e7;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     z-index: 10;
     /* 確保在其他內容之上 */
 }
