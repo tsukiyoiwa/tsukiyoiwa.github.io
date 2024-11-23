@@ -31,6 +31,7 @@
     display: flex;
     margin: 0;
     height: 50px;
+    width: 100%;
     justify-content: center;
     /* 水平居中 */
     align-items: center;
@@ -152,9 +153,7 @@
 }
 
 .menu_note {
-    position: absolute;
     left: 0;
-    margin: 5px;
     font-size: 0.9em;
     font-family: 'Noto Serif TC', serif;
     letter-spacing: .2em;
@@ -350,10 +349,9 @@
 .modal-container {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     justify-content: center;
@@ -363,7 +361,7 @@
 .modal-content {
     position: relative;
     /* 作為關閉按鈕的定位參考 */
-    width: 900px;
+    width: 600px;
     border-radius: 8px;
     max-height: 90vh;
     background: white;
@@ -528,18 +526,5 @@
         width: 100%;
 
         /*display: none;*/
-    }
-
-    .menu_note_btm {
-        width: 100%;
-        text-align: center;
-        line-height: 50px;
-        height: 50px;
-        font-size: 0.8em;
-        font-family: 'Noto Serif TC', serif;
-        letter-spacing: .2em;
-        color: #858585;
-        display: block;
-        -webkit-tap-highlight-color: transparent;
     }
 }
