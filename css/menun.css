@@ -153,6 +153,7 @@
 }
 
 .menu_note {
+    width: 100%;
     left: 0;
     font-size: 0.9em;
     font-family: 'Noto Serif TC', serif;
