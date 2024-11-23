@@ -519,11 +519,4 @@
     .menu_content {
         margin-bottom: 0;
     }
-
-    .menu_note {
-        text-align: center;
-        width: 100%;
-
-        /*display: none;*/
-    }
 }
