@@ -1,5 +1,5 @@
-const jsonPath = "https://tsukiyoiwa.com/Json/"
-//const jsonPath = "Json/"
+let jsonPath = "https://tsukiyoiwa.com/Json/"
+//jsonPath = "Json/"
 
 function w3_open() {
   $("#navbar").css("display", "block");
@@ -210,14 +210,22 @@ function FetchNewMenu(_language) {
   function createMenuItem(data) {
     const menuItem = document.createElement('div');
     menuItem.classList.add('menu-item');
-
-    // 動態生成 menu-item-code，根據 data.code 是否有值
+  
+    // 動態生成類型圖片
+    let typeIcons = '';
+    if (data.types && Array.isArray(data.types)) {
+      typeIcons = data.types.map(type => 
+        `<img class="menu-type-icon" src="imgs/Types_${type}.png" alt="">`
+      ).join('');
+    }
+  
+    // 動態生成 menu-item-code（如 "期間限定"）
     const codeDiv = data.code
-      ? `<div class="menu-item-code" style="background-color:${data.color}">
+      ? `<div class="menu-item-code" style="background-color:${data.color};">
             ${data.code}
-           </div>`
+         </div>` 
       : '';
-
+  
     menuItem.innerHTML = `
       <div class="menu-item-image">
         <img src="${data.image}" alt="${data.name}">
@@ -225,15 +233,19 @@ function FetchNewMenu(_language) {
       <div class="menu-item-info">
         <div class="menu-item-header">
           ${codeDiv}
+          <div class="menu-item-types">${typeIcons}</div> <!-- 插入類型圖片 -->
         </div>
         <h3 class="menu-item-title">${data.name}</h3>
         <div class="menu-item-price">${data.price}</div>
       </div>
     `;
-
+  
     menuItem.onclick = () => showModal(data);
     return menuItem;
   }
+  
+  
+  
 
   // 創建選單網格
   function createMenuGrid(jsonData) {

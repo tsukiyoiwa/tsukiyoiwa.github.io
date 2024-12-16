@@ -453,7 +453,44 @@
     font-size: 1.2em;
     margin: 0;
 }
-
+.menu-item-header {
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    gap: 10px; /* 與類型圖片間隔 */
+    height: 40px; /* 確保等高 */
+    padding-left: 15px; /* 增加左側內邊距 */
+  }
+  
+  .menu-item-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px; /* 固定高度 */
+    background-color: #ccc;
+    color: white;
+    padding: 0 8px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1em;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .menu-item-types {
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 類型圖片之間的間距 */
+    height: 40px; /* 與 menu-item-code 等高 */
+  }
+  
+  .menu-type-icon {
+    width: 30px; /* 圖片寬度 */
+    height: 30px; /* 圖片高度 */
+    object-fit: contain;
+  }
+  
+  
 @media screen and (max-width: 1024px) {
     .menu_flex_div {
         left: 20vw;
