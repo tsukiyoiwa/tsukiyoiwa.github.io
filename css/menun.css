@@ -327,6 +327,7 @@
     height: 135px;
     padding: 15px;
     letter-spacing: .15em;
+    line-height: 1.5em;
     font-size: 1.2em;
     font-family: 'Noto Serif TC', serif;
     color: #414141;
@@ -360,7 +361,7 @@
 .modal-content {
     position: relative;
     /* 作為關閉按鈕的定位參考 */
-    width: 600px;
+    width: 800px;
     /*border-radius: 8px;*/
     max-height: 90vh;
     background: white;
@@ -443,7 +444,7 @@
     white-space: pre-line;
     font-size: 1.5em;
     font-weight: bolder;
-    line-height: 1em;
+    line-height: 1.2em;
 }
 
 .modal-price {

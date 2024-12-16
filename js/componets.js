@@ -211,20 +211,25 @@ function FetchNewMenu(_language) {
     const menuItem = document.createElement('div');
     menuItem.classList.add('menu-item');
 
+    // 動態生成 menu-item-code，根據 data.code 是否有值
+    const codeDiv = data.code
+      ? `<div class="menu-item-code" style="background-color:${data.color}">
+            ${data.code}
+           </div>`
+      : '';
+
     menuItem.innerHTML = `
       <div class="menu-item-image">
         <img src="${data.image}" alt="${data.name}">
       </div>
       <div class="menu-item-info">
         <div class="menu-item-header">
-          <div class="menu-item-code" style="background-color:${data.color}">
-          ${data.code}
-          </div>
+          ${codeDiv}
         </div>
         <h3 class="menu-item-title">${data.name}</h3>
         <div class="menu-item-price">${data.price}</div>
       </div>
-  `;
+    `;
 
     menuItem.onclick = () => showModal(data);
     return menuItem;
