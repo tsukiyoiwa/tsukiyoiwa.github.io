@@ -1,5 +1,5 @@
 let jsonPath = "https://tsukiyoiwa.com/Json/"
-//jsonPath = "Json/"
+jsonPath = "Json/"
 
 function w3_open() {
   $("#navbar").css("display", "block");
