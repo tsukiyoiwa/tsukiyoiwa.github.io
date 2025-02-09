@@ -1,0 +1,139 @@
+[
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "TSUKIYOIWA Kaiseki with\nSeasonal Live Crab",
+        "price": "NT$6,800 per person",
+        "text1": "Embark on a luxurious Kaiseki journey featuring our carefully selected seasonal live crabs, with Snow Crab taking the lead.\n\nTsukiyoiwa selects different live crabs each season, allowing you to savor a variety of crab flavors. For instance, the Snow Crab is praised as the 'Queen of Crabs' for its tender, juicy, and flavorful meat.\n\nUnder the skilled hands of our Japanese Head Chef, Mr. Fukushima, each type of crab is prepared to perfection, ensuring that you experience the most exquisite taste.",
+        "text2": "Course Includes: Appetizer, Soup, Main Course, Four dishes featuring live seasonal crabs, and Dessert.",
+        "text3": "* Kaiseki with Seasonal Live Crab species is subject to availability and cannot be specified.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/NM4.jpeg",
+        "types": [
+            1,
+            3
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive King Crab &\nLive Snow Crab",
+        "price": "NT$12,800 per person",
+        "text1": "Experience the ultimate live crab course where you can enjoy both live King Crab and live Snow Crab in one exquisite package!\n\nOur chefs will personally prepare the two live crabs right in front of you. Not only can you savor the distinct textures of both live crabs simultaneously, but the diverse cooking methods will also delight your taste buds. This is TsukiyoIwa's premier and unrivaled live crab course!",
+        "text2": "Course Includes: Appetizer, Soup, Six dishes featuring live King Crab and Snow Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/NM5.jpeg",
+        "types": [
+            1,
+            3
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive Snow Crab",
+        "price": "NT$9,800 per person",
+        "text1": "Experience the exquisite blend of fresh and delicate live Snow Crab, infused with its rich and savory crab roe, allowing the true essence of the Snow Crab's flavor to shine in this delightful course!\n\nIndulge in the luxury of having one live Snow Crab per person, expertly prepared by our craftsman chefs. Enjoy the delicate and succulent crab meat spread generously over the crab shell, along with the heavenly essence of the full Snow Crab roe. The perfect conclusion to this extraordinary experience is the heartwarming crab shell mixed rice.",
+        "text2": "Course Includes: Appetizer, Soup, Main Course, Six dishes featuring live Snow Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/M4.jpg",
+        "types": [
+            1
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive Ise Lobster &\nLive Snow Crab",
+        "price": "NT$11,200 per person",
+        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once – live Snow Crab and live Ise lobster.\n\nTsukiyoiwa's signature live Snow Crab kaiseki, prepared onsite, is paired with the auspicious Ise lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
+        "text2": "Course Includes: Appetizer, Soup, Three dishes featuring live Ise lobster, Six dishes featuring live Snow Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/M9.jpg",
+        "types": [
+            1,
+            2
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nWagyu Beef &\nLive Snow Crab",
+        "price": "NT$11,200 per person",
+        "text1": "A dream combination of live Snow Crab kaiseki and the finest A5 Wagyu beef!\n\nWe have prepared the most premium ingredients from both land and sea! Coupled with the expertise of our craftsman chefs who will personally prepare live Snow Crab and Japan's finest A5 Wagyu beef right in front of you, this is a dreamy and extravagant feast that will truly satisfy your taste buds.",
+        "text2": "Course Includes: Appetizer, Soup, Three dishes featuring A5 Wagyu beef, Five dishes featuring live Snow Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/M8.jpg",
+        "types": [
+            1,
+            4
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive King Crab",
+        "price": "NT$9,800 per person",
+        "text1": "Indulge in a visually and gastronomically satisfying Kaiseki course, where our craftsman chefs will personally handle the live King Crab right in front of you.\n\nExperience various delightful preparations, from sashimi, grilling, hot pot, to frying, all designed to bring out the absolute freshness and deliciousness of the crab. This is a luxurious crab Kaiseki course rarely seen in Taiwan.",
+        "text2": "Course Includes: Appetizer, Soup, Main Course, Six dishes featuring live King Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/M5.jpg",
+        "types": [
+            3
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive King Crab＆Lobster",
+        "price": "NT$12,800 per person",
+        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once – live King Crab and Ise lobster. Tsukiyoiwa's signature live King Crab kaiseki, prepared onsite treatment, is paired with the auspicious lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
+        "text2": "Course Includes: Appetizer, Main Course, Three dishes featuring live Ise lobster, Six dishes featuring live King Crab, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/NM6.jpg",
+        "types": [
+            3,
+            2
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nWagyu Beef＆Live King Crab",
+        "price": "NT$12,800 per person",
+        "text1": "A dream combination of live King Crab kaiseki and the finest A5 Wagyu beef! We have prepared the most premium ingredients from both land and sea! Coupled with the expertise of our craftsman chefs who will personally prepare live King Crab and Japan's finest A5 Wagyu beef right in front of you, this is a dreamy and extravagant feast that will truly satisfy your taste buds.",
+        "text2": "Course Includes: Appetizer, Soup, Three dishes featuring A5 Wagyu beef, Five dishes featuring live cod, and Dessert.",
+        "text3": "* Due to the need for onsite preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If guests have limited time, please inform us during the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for more than two people. Every group must order from the same set menu.",
+        "image": "/imgs/menu/NM7.jpg",
+        "types": [
+            3,
+            4
+        ]
+    },
+    {
+        "code": "Group Only",
+        "color": "#8E8E8E",
+        "name": "Banquet Kaiseki with\nLive King Crab",
+        "price": "NT$8,800 per person",
+        "text1": "Looking for an excellent venue for group dining? Why not taste our kaiseki with live King Crab!\n\nWith the significant increase in dining-out demand worldwide after the end of the COVID-19 pandemic, the cost of ingredients continues to rise. Among them, the price increase and unstable supply of King Crab are particularly noticeable. However, in order to let our guests enjoy King Crab at reasonable prices as much as possible, we have introduced this special course. Welcome to Tsukiyoiwa to enjoy the deliciousness of King Crab.\n\nWhether it's a family gathering, a dinner with friends, or a business banquet, we can provide you with a warm and comfortable dining environment and a first-class culinary experience. At Tsukiyoiwa you can relax and enjoy a wonderful time with your loved ones or share delicious food with important business partners, and enjoy a pleasant dining experience.",
+        "text2": "「Banquet Kaiseki with Live King Crab」\nPrice: NT$8,800 per person (minimum 4 people)\nSupply period: From April 22nd～",
+        "text3": "* This course does not include private chef service",
+        "image": "/imgs/menu/M10.jpg",
+        "types": [
+            3
+        ]
+    },
+    {
+        "code": "Lunch Only",
+        "color": "#8E8E8E",
+        "name": "Lunch Only「Crab Set Menu」",
+        "price": "NT$4,500 per person",
+        "text1": "Tsukiyoiwa carefully selects various live crabs and has been providing fresh live crab dishes for a long time, hoping to promote the deliciousness and charm of Japanese 「live crab cuisine」 to our esteemed guests in Taiwan.\n\nWhether it's for business lunch or gatherings with friends, the 「Crab Set Menu」 is perfect for any customer who wants to easily enjoy the delicious offerings of Tsukiyoiwa.\n\nWe sincerely recommend that you come to Tsukiyoiwa to enjoy an elegant dining experience in a private and exclusive room.",
+        "text2": "* Limited availability for lunch daily, please make reservations in advance.",
+        "text3": "",
+        "image": "/imgs/menu/M13.jpg",
+        "types": [
+            1,
+            3
+        ]
+    }
+]

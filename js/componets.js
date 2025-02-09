@@ -142,7 +142,7 @@ function FetchAllMenu(_language) {
 
 function FetchNewMenu(_language) {
   // 設定 fetchfile 路徑
-  fetchfile = jsonPath + (_language === 'CN' ? 'menu.json' : 'EN_menu.json');
+  fetchfile = jsonPath + (_language === 'CN' ? 'menu.json' : 'EN_menu_new.json');
   menu_content_container = document.getElementById("menu_content-container");
 
   // 創建彈出視窗容器
