@@ -12,68 +12,22 @@
 <body style="background-color: #e7e7e7;">
     <div class="menu_flex_div">
         <div class="menu_container">
-            <div class="select_container">
-
-                <div class="sub_button-container" style="display: none;">
-                    <button class="menu_button" onclick="ChangeMenu(0,0)"><span></span></button>
-                </div>
-
-                <div id="menu_button-container">
-                    <button class="menu_button" onclick="ChangeMenu(1)"><span></span></button>
-                    <button class="menu_button" onclick="ChangeMenu(2)"><span></span></button>
-                    <button class="menu_button" onclick="ChangeMenu(3)"><span></span></button>
-                    <button class="menu_button" onclick="ChangeMenu(4)"><span></span></button>
-                    <button class="menu_button" onclick="ChangeMenu(5)"><span></span></button>
-                    <button class="menu_button" onclick="ChangeMenu(6)"><span></span></button>
-                </div>
-
-                <div id="sub_button-container">
-                    <button class="menu_button" onclick="ChangeMenu(7)"><span></span></button>
-                </div>
-
-            </div>
 
             <div id="menu_content-container">
 
-                <div class="menu_content mask" id="content">
-                    <div class="buttonContainer"></div>
-                    <div class="menu_price">
-                        <div class="menu_note">※Plus 10% service charge</div>
-                        <p></p>
-                    </div>
-                    <img class="menu_image">
-                    <div class="menu_content_info">
-                        <p class="menu_content-p title" id="content_text_title"></p>
-                        <p class="menu_content-p" id="content_text1"></p>
-                        <p class="menu_content-p include" id="content_text2"></p>
-                        <p class="menu_content-p note" id="content_text3"></p>
-                    </div>
 
-                    <div class="menu_content_wine">
-                        <p class="menu_content-p wineTitle">Japanese Sake</p>
-                        <p class="menu_content-p wine">We offer approximately 20 varieties of renowned Japanese sake from different regions in Japan.Additionally, every month, we carefully select a few recommended options for you to enjoy.
-                        </p>
+                <div class="menu_note">※Plus 10% service charge</div>
 
-                        <div class="winebreak"></div>
-                        <p class="menu_content-p wineTitle">Red and White Wine</p>
-                        <p class="menu_content-p wine">We have a diverse selection of wine, including champagne. Moreover, we provide carefully selected single glasses of white wine that complement the dishes.
-                        </p>
-                        <div class="winebreak"></div>
+                <div class="menu_grid">
 
-                        <p class="menu_content-p wineTitle">Other Choices<br>
-                            Apart from sake and wine, we also offer a wide range of options such as champagne, sparkling wines, fruit wines, and shochu for you to choose from.
-                        </p>
-                    </div>
 
                 </div>
 
-                <div class="menu_space"></div>
 
-                <div class="menu_note_btm">※Plus 10% service charge</div>
-                <div class="menu_reservation" onclick="go_link('/reservation.html')">Reservation</div>
 
             </div>
-
+            <div class="menu_space"></div>
+            <div class="menu_reservation" onclick="go_link('/reservation.html')">Reservation</div>
         </div>
     </div>
 
@@ -92,7 +46,7 @@
 
     <!--Title-->
     <div class="logo_div">
-        <div class="main_logo" onclick="go_link('/EN_index.html')"></div>
+        <div class="main_logo" onclick="go_link('/')"></div>
         <div id="page_name">Menu</div>
     </div>
 
@@ -146,8 +100,8 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="js/componets.js"></script>
-<script type= "text/javascript">
-    FetchAllMenu('EN');
+<script type="text/javascript">
+    FetchNewMenu('EN');
 </script>
 
 </html>
