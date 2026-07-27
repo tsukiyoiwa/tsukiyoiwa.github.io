@@ -1,0 +1,28 @@
+/* 最新消息頁 */
+
+.newsBox {
+    display: block;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.newsDate {
+    margin: 10px;
+    font-size: min(1.1em, 5vw);
+    font-weight: 900;
+}
+
+.highlight {
+    margin: 10px;
+    font-size: min(1.1em, 5vw);
+    font-weight: 600;
+    color: var(--brand);
+}
+
+.innerContent {
+    margin: 10px;
+    font-size: 1em;
+    color: var(--text-light);
+    line-height: 1.8em;
+}

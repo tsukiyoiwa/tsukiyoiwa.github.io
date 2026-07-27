@@ -1,0 +1,119 @@
+/* 用餐環境頁 */
+
+.envbox {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.imagebub {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.envname {
+    font-size: min(0.9em, 5vw);
+    text-align: center;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.grouptitle {
+    position: relative;
+    height: auto;
+    padding: 10px;
+}
+
+.envTitle {
+    letter-spacing: .1em;
+    width: 100%;
+    margin: 10px auto;
+    padding: 0;
+    text-align: right;
+    font-size: min(1.2em, 6vw);
+    font-weight: 900;
+    color: black;
+}
+
+.envContent {
+    letter-spacing: .1em;
+    width: 100%;
+    margin: 10px auto;
+    text-align: right;
+    font-size: min(0.9em, 5vw);
+    color: black;
+}
+
+.imagezone {
+    flex-shrink: 0;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: min(540px, 67.5vw);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.buttonContainer {
+    display: flex;
+    margin: 0;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.env_btn {
+    font-size: min(0.9em, 5vw);
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: var(--btn-gray);
+    margin: 5px;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.env_btn.active {
+    background-color: var(--brand);
+}
+
+.contentBox {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    touch-action: pan-y;
+}
+
+.contents {
+    display: flex;
+    transition: transform 0.35s cubic-bezier(.22, .61, .36, 1);
+    will-change: transform;
+}
+
+@media screen and (max-width: 652px) {
+    .grouptitle {
+        padding: 10px;
+    }
+
+    .subImageBox {
+        display: grid;
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        top: 0px;
+
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(auto, max-content);
+        grid-gap: 10px 10px;
+        margin: 0px 0 0px 0;
+    }
+}

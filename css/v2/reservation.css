@@ -1,0 +1,90 @@
+/* 訂位頁 */
+
+.deco_image {
+    position: relative;
+    top: -20px;
+    height: 30vh;
+    z-index: -1;
+    background-image: url('/imgs/home2.jpg');
+}
+
+.mainBox {
+    position: relative;
+    display: block;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    z-index: 0;
+}
+
+.mainBox_p {
+    letter-spacing: .15em;
+    font-size: min(1.1em, 5vw);
+}
+
+.mainBox_p.note {
+    margin-bottom: 8px;
+}
+
+.mainBox_p.money {
+    color: var(--brand-dark);
+    font-weight: 700;
+    margin: 0;
+}
+
+.mainBox_p.maxPeople {
+    color: var(--text-gray);
+    margin: 0;
+    font-size: min(1.0em, 4vw);
+}
+
+.mainBox_p.telephone {
+    color: var(--text-gray);
+    margin: 0;
+    font-size: min(1.0em, 4vw);
+    margin-top: 40px;
+    line-height: 2em;
+}
+
+/* 英文版 */
+:where([lang="en"]) .mainBox_p.telephone {
+    line-height: normal;
+}
+
+.content_box {
+    display: block;
+    position: relative;
+    top: -20px;
+    left: 0;
+    right: 0;
+    padding-bottom: 40px;
+}
+
+.hline {
+    width: 100%;
+}
+
+@media screen and (max-width: 652px) {
+    .mainBox {
+        width: 80%;
+    }
+
+    .deco_image {
+        height: 20vh;
+    }
+
+    /* 英文版 */
+    :where([lang="en"]) .deco_image {
+        height: 25vh;
+    }
+
+    .content_box {
+        top: -20px;
+        left: 20px;
+        right: 20px;
+    }
+}

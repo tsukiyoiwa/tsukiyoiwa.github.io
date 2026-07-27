@@ -1,0 +1,72 @@
+/* 店家資訊頁 */
+
+.deco_image {
+    position: relative;
+    top: 0px;
+    height: 30vh;
+    background-image: url('/imgs/Iinfomation.jpg');
+}
+
+.content_box {
+    display: grid;
+    position: relative;
+    left: 0;
+    right: 0;
+    padding-bottom: 40px;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(auto, max-content);
+    grid-gap: 8px;
+    margin: 30px 0 30px 0;
+}
+
+.content_p.link {
+    left: 5px;
+    display: inline-block;
+    position: relative;
+    font-weight: 700;
+    color: var(--brand-dark);
+    cursor: pointer;
+}
+
+.content_p.link:hover {
+    translate: 2px 0px;
+    transition-duration: 0.4s;
+}
+
+.location {
+    top: 3px;
+    display: inline-block;
+    position: relative;
+    left: 0px;
+}
+
+.parking {
+    width: 80%;
+    height: auto;
+    position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+    .content_box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .parking {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 652px) {
+    .deco_image {
+        height: 20vh;
+    }
+
+    .content_box {
+        margin: 0 auto;
+        width: 90%;
+        left: auto;
+        right: auto;
+    }
+}
