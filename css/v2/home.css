@@ -26,7 +26,7 @@
 .michelin_badge {
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 85%;
     transform: translate(-50%, -50%);
     width: min(280px, 22vw);
     pointer-events: none;

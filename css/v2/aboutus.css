@@ -11,7 +11,7 @@
     top: 0px;
     width: 100%;
     height: 320px;
-    background-position: center 10%; /* 直式照片偏上緣裁切,略去頭頂留白 */
+    background-position: center 18%; /* 直式照片偏上緣裁切,略去頭頂留白 */
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('/imgs/chef2.jpg');
