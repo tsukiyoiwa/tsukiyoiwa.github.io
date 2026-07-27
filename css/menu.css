@@ -1,3 +1,5 @@
+/* 料理頁 */
+
 .menu_flex_div {
     position: absolute;
     display: flex;
@@ -33,14 +35,11 @@
     height: 50px;
     width: 100%;
     justify-content: center;
-    /* 水平居中 */
     align-items: center;
-    /* 垂直居中 */
 }
 
 .menu_btn {
     font-size: min(0.9em, 5vw);
-    font-family: 'Noto Serif TC', serif;
     color: white;
     text-align: center;
     line-height: 25px;
@@ -48,14 +47,14 @@
     height: 20px;
     border-radius: 0px;
     display: inline-block;
-    background-color: #cccccc;
+    background-color: var(--btn-gray);
     margin: 5px;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
 .menu_btn.active {
-    background-color: #FFA723;
+    background-color: var(--brand);
 }
 
 .sub_button-container {
@@ -94,11 +93,10 @@
 }
 
 .menu_button.active {
-    background-color: #FFA723;
+    background-color: var(--brand);
 }
 
 .menu_button span {
-    font-family: 'Noto Serif TC', serif;
     letter-spacing: .2em;
     font-size: calc(max(min(1.8vw, 1.4em), 1.1em));
     font-weight: 400;
@@ -136,16 +134,14 @@
 .menu_content.mask::after {
     content: "Loading...";
     line-height: 100px;
-    justify-content: center;
 
-    font-family: 'Noto Serif TC', serif;
     letter-spacing: .1em;
     font-size: 1em;
     font-weight: 400;
     text-align: center;
     color: #000000;
 
-    background-color: #e7e7e7;
+    background-color: var(--bg-gray);
 }
 
 .menu_content.notransition::after {
@@ -154,10 +150,9 @@
 
 .menu_note {
     font-size: 0.9em;
-    font-family: 'Noto Serif TC', serif;
     letter-spacing: .2em;
     padding: 5px;
-    color: #6d6d6d;
+    color: var(--text-light);
 }
 
 .menu_content_info {
@@ -170,8 +165,7 @@
     padding: 20px;
     letter-spacing: .15em;
     font-size: 1em;
-    font-family: 'Noto Serif TC', serif;
-    color: #414141;
+    color: var(--text-gray);
     word-break: break-word;
     white-space: pre-line;
 }
@@ -215,7 +209,7 @@
 .menu_content-p.note {
     font-weight: lighter;
     font-size: 0.8em;
-    color: #414141;
+    color: var(--text-gray);
 }
 
 .menu_reservation {
@@ -227,7 +221,7 @@
 .menu_grid {
     display: block;
     width: 100%;
-    background-color: #e7e7e7;
+    background-color: var(--bg-gray);
 }
 
 .menu-item {
@@ -271,54 +265,62 @@
 
 .menu-item-info {
     position: relative;
-    /* 關鍵：讓子元素參考這個父容器 */
+    /* 關鍵:讓子元素參考這個父容器 */
     right: 0px;
     width: 55%;
     padding: 0;
 }
 
 .menu-item-header {
-    display: block;
-    height: 40px;
+    display: flex;
     align-items: center;
+    gap: 10px;
+    /* 與類型圖片間隔 */
+    height: 40px;
+    padding-left: 15px;
 }
 
 .menu-item-code {
     position: absolute;
-    background-color: #cccccc;
-    color: white;
-    padding: 0 8px;
-    border-bottom-left-radius: 10px;
-    font-size: 1em;
     right: 0px;
-    height: 40px;
     min-width: 40px;
-
+    height: 40px;
+    padding: 0 8px;
+    background-color: var(--btn-gray);
+    color: white;
+    font-size: 1em;
     letter-spacing: .2em;
-    font-family: 'Noto Serif TC', serif;
+    border-bottom-left-radius: 10px;
 
     display: flex;
-    /* 使用 flex 方便文字居中 */
     align-items: center;
-    /* 垂直居中 */
     justify-content: center;
-    /* 水平居中 */
     text-align: center;
-    /* 多行時文字居中 */
     overflow: hidden;
-    /* 隱藏超出範圍的內容 */
+}
+
+.menu-item-types {
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+}
+
+.menu-type-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 .menu-item-price {
     position: absolute;
-    font-weight: bold;
     font-size: 1.1em;
     margin: 0;
     padding: 10px;
     height: 25px;
     bottom: 0px;
     right: 0px;
-    font-family: 'Noto Serif TC', serif;
     letter-spacing: .2em;
     font-weight: bolder;
 }
@@ -330,20 +332,28 @@
     letter-spacing: .15em;
     line-height: 1.5em;
     font-size: 1.2em;
-    font-family: 'Noto Serif TC', serif;
-    color: #414141;
+    color: var(--text-gray);
     word-break: break-word;
     white-space: pre-line;
     display: flex;
-    /* 使用 flex 方便文字居中 */
     align-items: center;
-    /* 垂直居中 */
     justify-content: center;
-    /* 水平居中 */
     text-align: center;
-    /* 多行時文字居中 */
     overflow: hidden;
-    /* 隱藏超出範圍的內容 */
+}
+
+/* 英文版 */
+:where([lang="en"]) .menu-item-code {
+    font-size: 0.8em;
+}
+
+:where([lang="en"]) .menu-item-title {
+    font-size: 1.1em;
+}
+
+:where([lang="en"]) .menu-item-price {
+    font-size: clamp(0.7em, 2.5vw, 1.0em);
+    white-space: nowrap;
 }
 
 /*modal*/
@@ -363,11 +373,9 @@
     position: relative;
     /* 作為關閉按鈕的定位參考 */
     width: 800px;
-    /*border-radius: 8px;*/
     max-height: 90vh;
     background: white;
     overflow: hidden;
-    /* 隱藏內容溢出 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     padding: 5px;
     margin: 5px;
@@ -375,31 +383,23 @@
 
 .modal-body {
     max-height: 90vh;
-    /* 設置最大高度，與 .modal-content 一致 */
     overflow-y: auto;
-    /*border-radius: 8px;*/
-    /* 允許垂直滾動 */
 }
 
 .close-button {
     position: absolute;
-    /* 絕對定位 */
     top: 10px;
-    /* 距離 .modal-content 頂部 10px */
     right: 10px;
-    /* 距離 .modal-content 右側 10px */
     font-size: 30px;
     cursor: pointer;
     background: rgb(0, 0, 0);
-    color: #e7e7e7;
+    color: var(--bg-gray);
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /*border-radius: 50%;*/
     z-index: 10;
-    /* 確保在其他內容之上 */
 }
 
 .modal-image {
@@ -413,8 +413,7 @@
     padding: 10px;
     letter-spacing: .15em;
     font-size: 1em;
-    font-family: 'Noto Serif TC', serif;
-    color: #414141;
+    color: var(--text-gray);
     word-break: break-word;
     white-space: pre-line;
 }
@@ -427,7 +426,7 @@
 .modal-text3 {
     font-weight: lighter;
     font-size: 0.8em;
-    color: #414141;
+    color: var(--text-gray);
 }
 
 .modal-text.include {
@@ -438,60 +437,21 @@
 .modal-title {
     margin: 0;
     letter-spacing: .15em;
-    font-size: 1em;
-    font-family: 'Noto Serif TC', serif;
-    color: #414141;
-    word-break: break-word;
-    white-space: pre-line;
     font-size: 1.5em;
     font-weight: bolder;
     line-height: 1.2em;
+    color: var(--text-gray);
+    word-break: break-word;
+    white-space: pre-line;
 }
 
 .modal-price {
-    color: #FFA723;
+    color: var(--brand);
     font-weight: bold;
     font-size: 1.2em;
     margin: 0;
 }
-.menu-item-header {
-    display: flex;
-    align-items: center; /* 垂直置中 */
-    gap: 10px; /* 與類型圖片間隔 */
-    height: 40px; /* 確保等高 */
-    padding-left: 15px; /* 增加左側內邊距 */
-  }
-  
-  .menu-item-code {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    height: 40px; /* 固定高度 */
-    background-color: #ccc;
-    color: white;
-    padding: 0 8px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1em;
-    text-align: center;
-    border-bottom-left-radius: 10px;
-  }
-  
-  .menu-item-types {
-    left: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* 類型圖片之間的間距 */
-    height: 40px; /* 與 menu-item-code 等高 */
-  }
-  
-  .menu-type-icon {
-    width: 30px; /* 圖片寬度 */
-    height: 30px; /* 圖片高度 */
-    object-fit: contain;
-  }
-  
-  
+
 @media screen and (max-width: 1024px) {
     .menu_flex_div {
         left: 20vw;
@@ -547,7 +507,7 @@
         display: block;
         width: 100%;
         height: 50px;
-        background-color: #FFA723;
+        background-color: var(--brand);
         text-align: center;
         line-height: 50px;
         color: #000000;

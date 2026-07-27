@@ -1,5 +1,4 @@
-let jsonPath = "https://tsukiyoiwa.com/Json/"
-//jsonPath = "Json/"
+let jsonPath = "/Json/"
 
 function w3_open() {
   $("#navbar").css("display", "block");
@@ -399,19 +398,23 @@ function CreateNews(_language) {
 
 
 //Enviroment----------------------------------------
-let env_contentboxs = [];
+//輪播不使用原生捲動,改以 transform 移動,位置完全由 JS 控制
 let env_sectionNum = [0, 0];
 let env_buttonContainer = [];
 let env_btns = [[], []];
-let env_lastScrollPos = [0, 0];
-let env_scrollTimer = [null, null]
+let env_index = [0, 0];
+let env_tracks = [];
 
 function SetScrollListener() {
-  env_contentboxs = document.getElementsByClassName("contentBox");
+  const boxes = document.getElementsByClassName("contentBox");
   env_buttonContainer = document.getElementsByClassName("buttonContainer");
 
-  for (let i = 0; i < env_contentboxs.length; i++) {
-    const childElements = env_contentboxs[i].querySelectorAll('.imagezone');
+  for (let i = 0; i < boxes.length; i++) {
+    const box = boxes[i];
+    const track = box.querySelector('.contents');
+    if (!track) { continue; } //crab-page 的 contentBox 是文字區塊,略過
+    env_tracks[i] = track;
+    const childElements = track.querySelectorAll('.imagezone');
     env_sectionNum[i] = childElements.length;
 
     for (let j = 0; j < childElements.length; j++) {
@@ -424,36 +427,69 @@ function SetScrollListener() {
       env_buttonContainer[i].appendChild(env_btns[i][j]);
     }
 
-    //設置監聽器
-    env_contentboxs[i].addEventListener('scroll', () => {
-      const perW = env_contentboxs[i].scrollWidth / (env_sectionNum[i]);
+    let startX = 0, startY = 0, startTime = 0;
+    let axisLock = '';
 
-      clearTimeout(env_scrollTimer[i])
-      env_scrollTimer[i] = setTimeout(function () {
+    box.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = e.timeStamp;
+      axisLock = '';
+      track.style.transition = 'none'; //拖曳期間直接跟手,不要動畫
+    }, { passive: true });
 
-        env_lastScrollPos[i] = env_contentboxs[i].scrollLeft;
-        const index = Math.round(env_contentboxs[i].scrollLeft / perW);
-        ChangeEnvPic(index, i)
-      }, 100);
-    });
+    box.addEventListener('touchmove', (e) => {
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      //第一次明顯移動時判斷方向,直向交給頁面捲動
+      if (!axisLock) {
+        if (Math.abs(dx) < 5 && Math.abs(dy) < 5) { return; }
+        axisLock = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+      if (axisLock !== 'h') { return; }
+
+      const w = box.clientWidth;
+      let offset = -env_index[i] * w + dx;
+
+      //頭尾加阻尼,拖得動但拖不遠
+      const minOffset = -(env_sectionNum[i] - 1) * w;
+      if (offset > 0) { offset = offset / 3; }
+      else if (offset < minOffset) { offset = minOffset + (offset - minOffset) / 3; }
+
+      track.style.transform = 'translateX(' + offset + 'px)';
+    }, { passive: true });
+
+    box.addEventListener('touchend', (e) => {
+      track.style.transition = '';
+      if (axisLock !== 'h') { return; }
+      axisLock = '';
+
+      //拖過畫面寬 1/5,或快速一撥,就翻一張
+      const dx = e.changedTouches[0].clientX - startX;
+      const speed = Math.abs(dx) / Math.max(e.timeStamp - startTime, 1);
+      let target = env_index[i];
+      if (Math.abs(dx) > box.clientWidth / 5 || speed > 0.5) {
+        target += dx < 0 ? 1 : -1;
+      }
+      target = Math.min(Math.max(target, 0), env_sectionNum[i] - 1);
+      ChangeEnvPic(target, i);
+    }, { passive: true });
   }
 }
 
-function ChangeEnvPic(index, section) {
+//更新圓點狀態
+function SetEnvBtn(index, section) {
   for (var i = 0; i < env_sectionNum[section]; i++) {
     env_btns[section][i].classList.remove("active");
   }
   env_btns[section][index].classList.add("active");
+}
 
-  let content = document.getElementsByClassName("contentBox")[section];
-
-  const picPercent = 100 / (env_sectionNum[section] - 1);
-  const percentage = index * picPercent; // 要滚动的百分比
-  const scrollWidth = content.scrollWidth - content.clientWidth; // 可滚动的总宽度
-  const scrollTo = (scrollWidth * percentage) / 100; // 将百分比转换为像素值
-
-  content.scrollTo({
-    left: scrollTo,
-    behavior: "smooth" // 使用平滑滚动
-  });
+//移動到指定圖片(圓點與滑動共用)
+function ChangeEnvPic(index, section) {
+  env_index[section] = index;
+  SetEnvBtn(index, section);
+  //track 寬度即一頁寬,一張 = 100%,視窗縮放也不會跑位
+  env_tracks[section].style.transform = 'translateX(' + (-index * 100) + '%)';
 }
