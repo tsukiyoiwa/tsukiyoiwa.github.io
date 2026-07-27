@@ -22,6 +22,17 @@
     opacity: 1;
 }
 
+/* 米其林徽章 */
+.michelin_badge {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    width: min(280px, 22vw);
+    pointer-events: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
 @media screen and (max-width: 652px) {
     .background-container {
         width: 100%;
@@ -31,5 +42,9 @@
 
     .background-image {
         background-size: auto 100%;
+    }
+
+    .michelin_badge {
+        width: 40vw;
     }
 }
