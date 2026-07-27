@@ -47,6 +47,12 @@
     position: relative;
 }
 
+.michelin_logo {
+    display: block;
+    width: min(180px, 50%);
+    margin: 25px 0 0 5px;
+}
+
 @media screen and (max-width: 1024px) {
     .content_box {
         grid-template-columns: repeat(1, 1fr);

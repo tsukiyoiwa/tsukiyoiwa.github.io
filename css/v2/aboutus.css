@@ -10,11 +10,11 @@
     display: block;
     top: 0px;
     width: 100%;
-    height: 280px;
-    background-position: center;
+    height: 320px;
+    background-position: center 10%; /* 直式照片偏上緣裁切,略去頭頂留白 */
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('/imgs/chef.jpg');
+    background-image: url('/imgs/chef2.jpg');
 }
 
 .content_box {
@@ -46,7 +46,9 @@
 .speakdiv {
     margin: 0;
     position: absolute;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 內文垂直置中 */
     width: 52%;
     right: 0;
     top: 10px;
