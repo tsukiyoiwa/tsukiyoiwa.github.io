@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>菜單編輯器｜月夜岩</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap">
+    <style>
+        :root {
+            color-scheme: dark;
+            --brand: #FFA723;
+            --brand-dark: #FF8A00;
+            --bg: #17181b;
+            --panel: #212328;
+            --panel-2: #292c32;
+            --line: #383c44;
+            --text: #e8e8ea;
+            --muted: #9a9ba3;
+            --danger: #ff6b5e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Noto Serif TC", "Microsoft JhengHei", sans-serif;
+            font-size: 15px;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: .95em;
+            cursor: pointer;
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            border-color: var(--brand);
+        }
+
+        button.primary {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #241a08;
+            font-weight: 700;
+        }
+
+        button.primary:hover {
+            background: var(--brand-dark);
+            border-color: var(--brand-dark);
+        }
+
+        button.ghost {
+            background: transparent;
+            border-color: transparent;
+            color: var(--muted);
+            padding: 6px 8px;
+        }
+
+        button.ghost:hover {
+            color: var(--danger);
+        }
+
+        input[type=text],
+        textarea,
+        select {
+            width: 100%;
+            font-family: inherit;
+            font-size: 1em;
+            color: var(--text);
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            padding: 9px 10px;
+            background: #15161a;
+            resize: vertical;
+        }
+
+        input[type=text]:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid var(--brand);
+            outline-offset: -1px;
+            border-color: var(--brand);
+        }
+
+        code {
+            background: #15161a;
+            border: 1px solid var(--line);
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: .9em;
+        }
+
+        /* ---------- 頂部列 ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 70;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 12px 18px;
+            background: var(--panel);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar h1 {
+            margin: 0;
+            font-size: 1.15em;
+            letter-spacing: .1em;
+            white-space: nowrap;
+        }
+
+        .langtabs {
+            display: flex;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .langtabs button {
+            border: none;
+            border-radius: 0;
+            padding: 8px 18px;
+            background: transparent;
+        }
+
+        .langtabs button.active {
+            background: var(--brand);
+            color: #241a08;
+            font-weight: 700;
+        }
+
+        .spacer {
+            flex: 1;
+        }
+
+        .dirty {
+            display: none;
+            color: var(--brand);
+            font-size: .9em;
+            white-space: nowrap;
+        }
+
+        .dirty.on {
+            display: inline;
+        }
+
+        #pvShow.on {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #241a08;
+            font-weight: 700;
+        }
+
+        .banner {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 10px 18px;
+            background: #33291a;
+            border-bottom: 1px solid #4d3d21;
+            color: #f3d9a8;
+            font-size: .92em;
+            line-height: 1.7;
+        }
+
+        .banner.on {
+            display: flex;
+        }
+
+        .banner.err {
+            background: #3a2220;
+            border-bottom-color: #5c302c;
+            color: #ffb3aa;
+        }
+
+        /* ---------- 版面：滿寬，列表 4 : 內容 6 ---------- */
+        main {
+            display: grid;
+            grid-template-columns: 4fr 6fr;
+            gap: 16px;
+            padding: 16px;
+            align-items: start;
+        }
+
+        .pane {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .pane-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line);
+            font-weight: 700;
+            letter-spacing: .08em;
+        }
+
+        .pane-body {
+            padding: 16px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 66px;
+            max-height: calc(100vh - 82px);
+            overflow: auto;
+        }
+
+        /* ---------- 套餐列表（拖曳排序） ---------- */
+        #dishList {
+            list-style: none;
+            margin: 0;
+            padding: 6px;
+        }
+
+        #dishList li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 6px;
+            border-radius: 5px;
+            cursor: grab;
+            border: 1px solid transparent;
+        }
+
+        #dishList li:hover {
+            background: var(--panel-2);
+        }
+
+        #dishList li.active {
+            background: #33291a;
+            border-color: var(--brand);
+        }
+
+        #dishList li.dragging {
+            opacity: .4;
+        }
+
+        #dishList li.drop-above::before,
+        #dishList li.drop-below::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            right: 4px;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--brand);
+        }
+
+        #dishList li.drop-above::before {
+            top: -2px;
+        }
+
+        #dishList li.drop-below::after {
+            bottom: -2px;
+        }
+
+        #dishList .grip {
+            color: #5c606b;
+            font-size: 1.15em;
+            line-height: 1;
+            flex: none;
+        }
+
+        #dishList li:hover .grip {
+            color: var(--brand);
+        }
+
+        #dishList .num {
+            flex: none;
+            width: 18px;
+            text-align: right;
+            font-size: .78em;
+            color: var(--muted);
+        }
+
+        #dishList img {
+            width: 62px;
+            height: 44px;
+            object-fit: cover;
+            background: #15161a;
+            border-radius: 3px;
+            flex: none;
+            pointer-events: none;
+        }
+
+        #dishList .meta {
+            flex: 1;
+            min-width: 0;
+            pointer-events: none;
+        }
+
+        #dishList .n {
+            font-size: .95em;
+            line-height: 1.4;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #dishList .p {
+            font-size: .82em;
+            color: var(--muted);
+        }
+
+        /* ---------- 表單：標題與內容同一列 ---------- */
+        .field {
+            display: grid;
+            grid-template-columns: 96px 1fr;
+            gap: 14px;
+            align-items: start;
+            margin-bottom: 14px;
+        }
+
+        .field>label {
+            padding-top: 10px;
+            font-size: .9em;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .05em;
+            white-space: nowrap;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .price-row input[type=text] {
+            flex: none;
+            width: 120px;
+            font-size: 1.1em;
+            text-align: right;
+        }
+
+        .price-row select {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .swatch {
+            width: 34px;
+            height: 34px;
+            border-radius: 5px;
+            border: 2px solid var(--line);
+            padding: 0;
+            flex: none;
+        }
+
+        .swatch.active {
+            border-color: #fff;
+        }
+
+        .swatch.none {
+            background: #15161a;
+            color: var(--muted);
+            line-height: 1;
+        }
+
+        .swatch.none.active {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .typegrid {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .typegrid label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            padding: 7px 10px;
+            cursor: pointer;
+        }
+
+        .typegrid label.on {
+            border-color: var(--brand);
+            background: #33291a;
+        }
+
+        .typegrid img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            filter: brightness(1.35);
+        }
+
+        .typegrid span {
+            font-size: .86em;
+        }
+
+        .imgbox {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .imgbox .thumb {
+            width: 132px;
+            height: 94px;
+            flex: none;
+            object-fit: cover;
+            background: #15161a;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+        }
+
+        .empty {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--muted);
+            line-height: 2;
+        }
+
+        /* ---------- 懸浮預覽視窗 ---------- */
+        .float-preview {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            z-index: 65;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .6);
+            overflow: hidden;
+        }
+
+        .float-preview.hidden {
+            display: none;
+        }
+
+        .float-preview .pane-head {
+            cursor: move;
+            user-select: none;
+            flex: none;
+        }
+
+        .float-preview .pane-head .grab {
+            color: #5c606b;
+        }
+
+        #sizeInfo {
+            margin-left: auto;
+            font-size: .78em;
+            font-weight: 400;
+            letter-spacing: 0;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .prev-tabs {
+            display: flex;
+            gap: 6px;
+        }
+
+        .prev-tabs button {
+            padding: 5px 11px;
+            font-size: .82em;
+        }
+
+        .prev-tabs button.active {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #241a08;
+        }
+
+        #previewBody {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .frame-wrap {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            background: #e7e7e7;
+        }
+
+        #previewFrame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* 拖曳時蓋住 iframe，否則滑鼠移到上面事件會被吃掉，拖到一半就中斷 */
+        .frame-shield {
+            position: absolute;
+            inset: 0;
+            display: none;
+        }
+
+        .float-preview.busy .frame-shield {
+            display: block;
+        }
+
+        /* 八個方向的縮放把手 */
+        .rz {
+            position: absolute;
+            z-index: 3;
+        }
+
+        .rz-n {
+            top: -3px;
+            left: 10px;
+            right: 10px;
+            height: 8px;
+            cursor: ns-resize;
+        }
+
+        .rz-s {
+            bottom: -3px;
+            left: 10px;
+            right: 10px;
+            height: 8px;
+            cursor: ns-resize;
+        }
+
+        .rz-w {
+            left: -3px;
+            top: 10px;
+            bottom: 10px;
+            width: 8px;
+            cursor: ew-resize;
+        }
+
+        .rz-e {
+            right: -3px;
+            top: 10px;
+            bottom: 10px;
+            width: 8px;
+            cursor: ew-resize;
+        }
+
+        .rz-nw {
+            top: -3px;
+            left: -3px;
+            width: 14px;
+            height: 14px;
+            cursor: nwse-resize;
+        }
+
+        .rz-ne {
+            top: -3px;
+            right: -3px;
+            width: 14px;
+            height: 14px;
+            cursor: nesw-resize;
+        }
+
+        .rz-sw {
+            bottom: -3px;
+            left: -3px;
+            width: 14px;
+            height: 14px;
+            cursor: nesw-resize;
+        }
+
+        .rz-se {
+            bottom: -3px;
+            right: -3px;
+            width: 14px;
+            height: 14px;
+            cursor: nwse-resize;
+        }
+
+        .rz-se::after {
+            content: "";
+            position: absolute;
+            right: 3px;
+            bottom: 3px;
+            width: 7px;
+            height: 7px;
+            border-right: 2px solid var(--line);
+            border-bottom: 2px solid var(--line);
+        }
+
+        .float-preview:hover .rz-se::after {
+            border-color: var(--brand);
+        }
+
+        .pending {
+            flex: none;
+            margin: 0;
+            padding: 8px 12px;
+            background: var(--panel);
+            border-top: 1px solid var(--line);
+            font-size: .82em;
+            color: var(--muted);
+            line-height: 1.6;
+            max-height: 96px;
+            overflow: auto;
+        }
+
+        .pending b {
+            color: var(--brand);
+        }
+
+        .pending ul {
+            margin: 4px 0 0;
+            padding-left: 20px;
+            word-break: break-all;
+        }
+
+        @media (max-width: 860px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky {
+                position: static;
+                max-height: none;
+            }
+
+            .field {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .field>label {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <h1>月夜岩 菜單編輯器</h1>
+        <div class="langtabs">
+            <button id="tabCN" class="active" onclick="setLang('CN')">中文</button>
+            <button id="tabEN" onclick="setLang('EN')">English</button>
+        </div>
+        <span class="spacer"></span>
+        <span id="dirty" class="dirty">● 已修改，尚未下載</span>
+        <button id="pvShow" onclick="togglePreviewPanel()">預覽</button>
+        <button onclick="loadRemote(true)">重新載入線上菜單</button>
+        <button class="primary" onclick="download()">下載 <span id="dlName">menu.json</span></button>
+    </div>
+
+    <div id="banner" class="banner"></div>
+
+    <main>
+        <section class="pane list-pane">
+            <div class="pane-head">
+                <span id="listTitle">套餐列表</span>
+                <span class="spacer"></span>
+                <button onclick="addDish()">＋ 新增</button>
+            </div>
+            <div class="sticky">
+                <ul id="dishList"></ul>
+            </div>
+        </section>
+
+        <section class="pane">
+            <div class="pane-head">編輯內容</div>
+            <div class="pane-body" id="formPane"></div>
+        </section>
+    </main>
+
+    <section class="pane float-preview hidden" id="previewPanel">
+        <div class="rz rz-n" data-dir="n"></div>
+        <div class="rz rz-s" data-dir="s"></div>
+        <div class="rz rz-w" data-dir="w"></div>
+        <div class="rz rz-e" data-dir="e"></div>
+        <div class="rz rz-nw" data-dir="nw"></div>
+        <div class="rz rz-ne" data-dir="ne"></div>
+        <div class="rz rz-sw" data-dir="sw"></div>
+        <div class="rz rz-se" data-dir="se"></div>
+
+        <div class="pane-head" id="previewHandle">
+            <span class="grab">&#10287;</span>
+            <div class="prev-tabs">
+                <button id="pvCard" class="active" onclick="setPreview('card')">列表卡片</button>
+                <button id="pvModal" onclick="setPreview('modal')">點開後的詳細</button>
+            </div>
+            <span id="sizeInfo"></span>
+            <button class="ghost" onclick="togglePreviewPanel()" title="關閉預覽">&#10005;</button>
+        </div>
+
+        <div id="previewBody">
+            <div class="frame-wrap" id="frameWrap">
+                <iframe id="previewFrame" title="預覽"></iframe>
+                <div class="frame-shield" id="frameShield"></div>
+            </div>
+            <div class="pending" id="pendingBox"></div>
+        </div>
+    </section>
+
+    <script>
+        // ===== 常數 =====
+        var TYPES = [
+            { id: 1, label: '松葉蟹' },
+            { id: 2, label: '伊勢海老' },
+            { id: 3, label: '鱈場蟹' },
+            { id: 4, label: '和牛' }
+        ];
+        var COLORS = [
+            { v: '#FFA723', label: '橘（一般標籤）' },
+            { v: '#8E8E8E', label: '灰（次要標籤）' }
+        ];
+        var PRICE_FORMATS = {
+            CN: [
+                { t: '{n}元/人', label: '元/人' },
+                { t: '{n}元', label: '元' },
+                { t: '{n}元起/人', label: '元起/人' }
+            ],
+            EN: [
+                { t: 'NT${n} per person', label: 'NT$… per person' },
+                { t: 'NT${n}', label: 'NT$…' },
+                { t: 'NT${n} and up per person', label: 'NT$… and up per person' }
+            ]
+        };
+        var NOTE = { CN: '※價格需另加10%服務費', EN: '※Plus 10% service charge' };
+        // 網站真正的斷點（css/v2/menu.css）
+        var BREAKPOINTS = [{ max: 652, name: '手機版面' }, { max: 1024, name: '平板版面' }, { max: Infinity, name: '桌機版面' }];
+        var MIN_W = 320, MIN_H = 220;
+        var IMG_DIR = '/imgs/menu/newRatio/';
+        var FILES = { CN: 'menu.json', EN: 'EN_menu.json' };
+        var DRAFT_KEY = 'tsukiyoiwa_menu_draft_v1';
+        var UI_KEY = 'tsukiyoiwa_admin_ui_v3';
+
+        // ===== 狀態 =====
+        var store = { CN: [], EN: [] };
+        var lang = 'CN';
+        var sel = 0;
+        var previewMode = 'card';
+        var previewOpen = false;
+        var geom = null;              // {left, top, w, h}
+        var frameKey = '';
+        var dirty = false;
+        var localImages = {};
+        var pendingDraft = null;
+        var customPrice = new WeakSet();
+        var dragFrom = null;
+
+        function blank() {
+            return { code: '', color: COLORS[0].v, name: '', price: '', text1: '', text2: '', text3: '', image: '', types: [] };
+        }
+        function list() { return store[lang]; }
+        function current() { return list()[sel]; }
+        function esc(s) {
+            return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+            });
+        }
+        function $(id) { return document.getElementById(id); }
+
+        // 網站上的路徑是 /imgs/...；若直接用 file:// 開啟這頁，要改成相對路徑才顯示得出來
+        function resolveImg(p) {
+            if (!p) return '';
+            if (localImages[p]) return localImages[p];
+            if (location.protocol === 'file:' && p.charAt(0) === '/') return '.' + p;
+            return p;
+        }
+
+        function banner(msg, isErr) {
+            var b = $('banner');
+            b.className = 'banner on' + (isErr ? ' err' : '');
+            b.innerHTML = msg;
+        }
+        function hideBanner() { $('banner').className = 'banner'; }
+
+        function markDirty() {
+            dirty = true;
+            $('dirty').className = 'dirty on';
+            try {
+                localStorage.setItem(DRAFT_KEY, JSON.stringify({ at: Date.now(), store: store }));
+            } catch (e) { }
+        }
+        function clearDirty() {
+            dirty = false;
+            $('dirty').className = 'dirty';
+        }
+
+        // ===== 價格：數字 + 格式 =====
+        function addCommas(digits) {
+            return String(digits).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        function onlyDigits(s) { return String(s == null ? '' : s).replace(/[^\d]/g, ''); }
+        function composePrice(digits, tpl) {
+            if (!digits) return '';
+            // 用 split/join 而不是 replace，避免範本裡的 $ 被當成特殊字元
+            return tpl.split('{n}').join(addCommas(digits));
+        }
+        function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+        function parsePrice(str, l) {
+            if (!str) return { digits: '', fmt: 0 };
+            var fmts = PRICE_FORMATS[l];
+            for (var i = 0; i < fmts.length; i++) {
+                var parts = fmts[i].t.split('{n}');
+                var re = new RegExp('^' + parts.map(escapeRe).join('([\\d,]+)') + '$');
+                var m = str.match(re);
+                if (m) return { digits: onlyDigits(m[1]), fmt: i };
+            }
+            return null;
+        }
+        function priceState(d) {
+            if (customPrice.has(d)) return null;
+            return parsePrice(d.price, lang);
+        }
+        function setPriceDigits(v) {
+            var d = current();
+            if (!d) return;
+            var st = priceState(d);
+            var tpl = PRICE_FORMATS[lang][st ? st.fmt : 0].t;
+            d.price = composePrice(onlyDigits(v), tpl);
+            markDirty();
+            renderList();
+            renderPreview();
+        }
+        function setPriceFormat(i) {
+            var d = current();
+            if (!d) return;
+            if (i === 'custom') { customPrice.add(d); renderForm(); renderPreview(); return; }
+            var st = priceState(d);
+            var digits = st ? st.digits : onlyDigits(d.price);
+            customPrice.delete(d);
+            d.price = composePrice(digits, PRICE_FORMATS[lang][Number(i)].t);
+            markDirty();
+            renderForm();
+            renderList();
+            renderPreview();
+        }
+
+        // ===== 載入（只從線上載入） =====
+        function loadRemote(manual) {
+            if (manual && dirty && !confirm('目前的修改還沒下載，重新載入會全部消失。確定要繼續嗎？')) return;
+            Promise.all([fetchJson(FILES.CN), fetchJson(FILES.EN)]).then(function (r) {
+                store.CN = r[0];
+                store.EN = r[1];
+                sel = 0;
+                localImages = {};
+                customPrice = new WeakSet();
+                clearDirty();
+                if (manual) discardDraft();
+                render();
+                if (pendingDraft) showDraftBanner(); else hideBanner();
+            }).catch(function () {
+                banner('讀不到線上的菜單檔案，請確認網路連線後再按「重新載入線上菜單」。', true);
+            });
+        }
+
+        function fetchJson(name) {
+            var bust = '?t=' + Date.now();
+            return fetch('/Json/' + name + bust)
+                .catch(function () { return fetch('Json/' + name + bust); })
+                .then(function (res) {
+                    if (!res.ok) throw new Error(res.status);
+                    return res.json();
+                });
+        }
+
+        // ===== 語言 / 選取 =====
+        function setLang(l) {
+            lang = l;
+            sel = 0;
+            render();
+        }
+        function select(i) {
+            sel = i;
+            renderList();
+            renderForm();
+            renderPreview();
+        }
+
+        // ===== 新增 / 複製 / 刪除 / 排序 =====
+        function addDish() {
+            list().push(blank());
+            sel = list().length - 1;
+            markDirty();
+            render();
+        }
+        function dupDish(i, ev) {
+            ev.stopPropagation();
+            list().splice(i + 1, 0, JSON.parse(JSON.stringify(list()[i])));
+            sel = i + 1;
+            markDirty();
+            render();
+        }
+        function delDish(i, ev) {
+            ev.stopPropagation();
+            var name = (list()[i].name || '(未命名)').replace(/\n/g, ' ');
+            if (!confirm('確定要刪除「' + name + '」嗎？')) return;
+            list().splice(i, 1);
+            if (sel >= list().length) sel = Math.max(0, list().length - 1);
+            markDirty();
+            render();
+        }
+        // 把第 from 道搬到「原本第 before 道的前面」
+        function moveTo(from, before) {
+            var arr = list();
+            if (from < 0 || from >= arr.length) return;
+            if (before === from || before === from + 1) return;
+            var item = arr.splice(from, 1)[0];
+            var idx = before > from ? before - 1 : before;
+            arr.splice(idx, 0, item);
+            sel = idx;
+            markDirty();
+            render();
+        }
+
+        // ===== 欄位更新 =====
+        function setField(key, value) {
+            var d = current();
+            if (!d) return;
+            d[key] = value;
+            markDirty();
+            renderList();
+            renderPreview();
+        }
+        function toggleType(id, on) {
+            var d = current();
+            if (!d) return;
+            if (!Array.isArray(d.types)) d.types = [];
+            if (on) {
+                if (d.types.indexOf(id) === -1) d.types.push(id);
+            } else {
+                d.types = d.types.filter(function (t) { return t !== id; });
+            }
+            markDirty();
+            renderForm();
+            renderPreview();
+        }
+        function pickColor(v) {
+            setField('color', v);
+            renderForm();
+        }
+        function clearCode() {
+            setField('code', '');
+            renderForm();
+        }
+        function pickImage(input) {
+            var f = input.files && input.files[0];
+            if (!f) return;
+            var path = IMG_DIR + f.name;
+            localImages[path] = URL.createObjectURL(f);
+            setField('image', path);
+            renderForm();
+            input.value = '';
+        }
+
+        // ===== 畫面 =====
+        function render() {
+            $('tabCN').textContent = '中文 (' + store.CN.length + ')';
+            $('tabEN').textContent = 'English (' + store.EN.length + ')';
+            $('tabCN').className = lang === 'CN' ? 'active' : '';
+            $('tabEN').className = lang === 'EN' ? 'active' : '';
+            $('dlName').textContent = FILES[lang];
+            $('listTitle').textContent = (lang === 'CN' ? '中文' : '英文') + '套餐 ' + list().length + ' 道';
+            renderList();
+            renderForm();
+            renderPreview();
+        }
+
+        function clearDropMarks() {
+            var li = document.querySelectorAll('#dishList li');
+            for (var i = 0; i < li.length; i++) li[i].classList.remove('drop-above', 'drop-below');
+        }
+
+        function renderList() {
+            var ul = $('dishList');
+            ul.innerHTML = '';
+            list().forEach(function (d, i) {
+                var li = document.createElement('li');
+                li.className = i === sel ? 'active' : '';
+                li.draggable = true;
+                li.onclick = function () { select(i); };
+                li.innerHTML =
+                    '<span class="grip">&#10287;</span>' +
+                    '<span class="num">' + (i + 1) + '</span>' +
+                    '<img src="' + esc(resolveImg(d.image)) + '" alt="">' +
+                    '<span class="meta"><span class="n">' +
+                    (esc(d.name).replace(/\n/g, ' ') || '<i>(未命名)</i>') + '</span>' +
+                    '<span class="p">' + esc(d.price) + '</span></span>';
+
+                var dup = document.createElement('button');
+                dup.className = 'ghost';
+                dup.title = '複製這道';
+                dup.innerHTML = '&#10697;';
+                dup.draggable = false;
+                dup.onclick = function (e) { dupDish(i, e); };
+                var del = document.createElement('button');
+                del.className = 'ghost';
+                del.title = '刪除這道';
+                del.innerHTML = '&#10005;';
+                del.draggable = false;
+                del.onclick = function (e) { delDish(i, e); };
+                li.appendChild(dup);
+                li.appendChild(del);
+
+                li.ondragstart = function (e) {
+                    dragFrom = i;
+                    li.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                    try { e.dataTransfer.setData('text/plain', String(i)); } catch (err) { }
+                };
+                li.ondragend = function () {
+                    li.classList.remove('dragging');
+                    clearDropMarks();
+                    dragFrom = null;
+                };
+                li.ondragover = function (e) {
+                    if (dragFrom === null) return;
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    var r = li.getBoundingClientRect();
+                    clearDropMarks();
+                    li.classList.add((e.clientY - r.top) > r.height / 2 ? 'drop-below' : 'drop-above');
+                };
+                li.ondragleave = function () { li.classList.remove('drop-above', 'drop-below'); };
+                li.ondrop = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var r = li.getBoundingClientRect();
+                    var before = ((e.clientY - r.top) > r.height / 2) ? i + 1 : i;
+                    var from = dragFrom;
+                    clearDropMarks();
+                    dragFrom = null;
+                    if (from !== null) moveTo(from, before);
+                };
+                ul.appendChild(li);
+            });
+
+            ul.ondragover = function (e) { if (dragFrom !== null) e.preventDefault(); };
+            ul.ondrop = function (e) {
+                e.preventDefault();
+                var from = dragFrom;
+                clearDropMarks();
+                dragFrom = null;
+                if (from !== null) moveTo(from, list().length);
+            };
+        }
+
+        function renderForm() {
+            var pane = $('formPane');
+            var d = current();
+            if (!d) {
+                pane.innerHTML = '<div class="empty">這個語言目前沒有套餐。<br>按左上角「＋ 新增」開始。</div>';
+                return;
+            }
+
+            var st = priceState(d);
+            var priceHtml;
+            if (st) {
+                var opts = PRICE_FORMATS[lang].map(function (f, i) {
+                    return '<option value="' + i + '"' + (i === st.fmt ? ' selected' : '') + '>' + esc(f.label) + '</option>';
+                }).join('') + '<option value="custom">自訂</option>';
+                priceHtml =
+                    '<div class="row price-row">' +
+                    '<input type="text" inputmode="numeric" value="' + esc(st.digits) +
+                    '" oninput="setPriceDigits(this.value)" placeholder="6800">' +
+                    '<select onchange="setPriceFormat(this.value)">' + opts + '</select></div>';
+            } else {
+                priceHtml =
+                    '<div class="row price-row">' +
+                    '<input type="text" style="flex:1;width:auto;text-align:left" value="' + esc(d.price) +
+                    '" oninput="setField(\'price\', this.value)">' +
+                    '<button onclick="setPriceFormat(0)">選單模式</button></div>';
+            }
+
+            var noCode = !d.code;
+            var swatches =
+                '<button class="swatch none' + (noCode ? ' active' : '') + '" title="沒有標籤" onclick="clearCode()">&#10005;</button>' +
+                COLORS.map(function (c) {
+                    return '<button class="swatch' + (!noCode && d.color === c.v ? ' active' : '') + '" title="' + c.label +
+                        '" style="background:' + c.v + '" onclick="pickColor(\'' + c.v + '\')"></button>';
+                }).join('') +
+                '<input type="color" value="' + esc(d.color || COLORS[0].v) + '" title="自訂顏色" onchange="pickColor(this.value)" ' +
+                'style="width:38px;height:34px;padding:2px;border:1px solid var(--line);border-radius:5px;background:#15161a;cursor:pointer">';
+
+            var typeBoxes = TYPES.map(function (t) {
+                var on = (d.types || []).indexOf(t.id) !== -1;
+                return '<label class="' + (on ? 'on' : '') + '">' +
+                    '<input type="checkbox" ' + (on ? 'checked' : '') + ' onchange="toggleType(' + t.id + ', this.checked)">' +
+                    '<img src="' + resolveImg('/imgs/Types_' + t.id + '.png') + '" alt="">' +
+                    '<span>' + t.label + '</span></label>';
+            }).join('');
+
+            pane.innerHTML =
+                '<div class="field"><label>套餐名稱</label>' +
+                '<textarea rows="2" oninput="setField(\'name\', this.value)">' + esc(d.name) + '</textarea></div>' +
+
+                '<div class="field"><label>價格</label><div>' + priceHtml + '</div></div>' +
+
+                '<div class="field"><label>角落標籤</label>' +
+                '<div class="row"><input type="text" style="flex:1;min-width:140px" value="' + esc(d.code) +
+                '" oninput="setField(\'code\', this.value)" placeholder="例：期間限定">' + swatches + '</div></div>' +
+
+                '<div class="field"><label>食材標籤</label><div class="typegrid">' + typeBoxes + '</div></div>' +
+
+                '<div class="field"><label>照片</label><div class="imgbox">' +
+                '<img class="thumb" src="' + esc(resolveImg(d.image)) + '" alt="">' +
+                '<div style="flex:1;min-width:0">' +
+                '<button onclick="document.getElementById(\'imgIn\').click()">從電腦選圖片</button>' +
+                '<input type="file" id="imgIn" accept="image/*" hidden onchange="pickImage(this)">' +
+                '<input type="text" style="margin-top:8px" value="' + esc(d.image) +
+                '" oninput="setField(\'image\', this.value)" placeholder="' + IMG_DIR + '檔名.jpg">' +
+                '</div></div></div>' +
+
+                '<div class="field"><label>介紹文字</label>' +
+                '<textarea rows="9" oninput="setField(\'text1\', this.value)">' + esc(d.text1) + '</textarea></div>' +
+
+                '<div class="field"><label>套餐內容</label>' +
+                '<textarea rows="3" oninput="setField(\'text2\', this.value)">' + esc(d.text2) + '</textarea></div>' +
+
+                '<div class="field"><label>注意事項</label>' +
+                '<textarea rows="6" oninput="setField(\'text3\', this.value)">' + esc(d.text3) + '</textarea></div>';
+        }
+
+        // ===== 預覽：iframe 載入網站真正的 CSS，寬度永遠跟著視窗 =====
+        function baseHref() {
+            return location.href.replace(/[^/]*$/, '');
+        }
+
+        // ⚠️ 整份 JS（含註解）刻意不寫出 body / head / html / style 的「結束標籤原文」。
+        //    Live Server 這類開發伺服器會用字串搜尋檔案裡第一個 body 結束標籤，把自動
+        //    重整的程式碼注入在它前面。只要這段 JS 裡出現那串字，注入點就會落在程式碼
+        //    中間，注入內容自帶的結束標籤會把整個 script 區塊提早切斷，於是頁面上所有
+        //    函式都變成 undefined。下面 doc2.write 裡的反斜線 <\/head> 就是為了避開這件
+        //    事——看起來多餘，但請不要「順手清掉」。
+        function writeFrameSkeleton(doc2) {
+            doc2.open();
+            doc2.write('<!DOCTYPE html><html><head><\/head><body><\/body><\/html>');
+            doc2.close();
+
+            doc2.documentElement.setAttribute('lang', lang === 'EN' ? 'en' : 'zh-Hant');
+
+            var base = doc2.createElement('base');
+            base.setAttribute('href', baseHref());
+            doc2.head.appendChild(base);          // 要先加，後面的相對路徑才解析得到
+
+            ['https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap',
+                'css/v2/style.css',
+                'css/v2/menu.css'].forEach(function (href) {
+                    var l = doc2.createElement('link');
+                    l.setAttribute('rel', 'stylesheet');
+                    l.setAttribute('href', href);
+                    doc2.head.appendChild(l);
+                });
+
+            var st = doc2.createElement('style');
+            st.textContent = 'html,body{height:100%;margin:0}';
+            doc2.head.appendChild(st);
+
+            doc2.body.setAttribute('style', 'background-color:#e7e7e7');
+            var root = doc2.createElement('div');
+            root.id = 'root';
+            doc2.body.appendChild(root);
+        }
+
+        // 與 menu.html + componets_v2.js 產生的結構一致
+        function cardHtml(d) {
+            var icons = (d.types || []).map(function (t) {
+                return '<img class="menu-type-icon" src="' + resolveImg('/imgs/Types_' + t + '.png') + '" alt="">';
+            }).join('');
+            var code = d.code
+                ? '<div class="menu-item-code" style="background-color:' + esc(d.color || COLORS[0].v) + '">' + esc(d.code) + '</div>'
+                : '';
+            return '<div class="menu_flex_div"><div class="menu_container"><div id="menu_content-container">' +
+                '<div class="menu_note">' + NOTE[lang] + '</div>' +
+                '<div class="menu_grid"><div class="menu-item">' +
+                '<div class="menu-item-image"><img src="' + esc(resolveImg(d.image)) + '" alt=""></div>' +
+                '<div class="menu-item-info">' +
+                '<div class="menu-item-header">' + code + '<div class="menu-item-types">' + icons + '</div></div>' +
+                '<h3 class="menu-item-title">' + esc(d.name) + '</h3>' +
+                '<div class="menu-item-price">' + esc(d.price) + '</div>' +
+                '</div></div></div></div></div></div>';
+        }
+
+        function modalHtml(d) {
+            return '<div class="modal-container" style="display:flex"><div class="modal-content">' +
+                '<span class="close-button">&times;</span>' +
+                '<div class="modal-body">' +
+                '<img class="modal-image" src="' + esc(resolveImg(d.image)) + '" alt="">' +
+                '<div class="modal-text">' +
+                '<h2 class="modal-title">' + esc(d.name) + '</h2>' +
+                '<div class="modal-price">' + esc(d.price) + '</div>' +
+                '<div class="modal-text1">' + esc(d.text1) + '</div>' +
+                '<div class="modal-text2">' + esc(d.text2) + '</div>' +
+                '<div class="modal-text3">' + esc(d.text3) + '</div>' +
+                '</div></div></div></div>';
+        }
+
+        function paintFrame() {
+            var f = $('previewFrame');
+            var d = current();
+            var doc2 = f.contentDocument;
+            if (!doc2) return;
+            var root = doc2.getElementById('root');
+            if (!root) return;
+            root.innerHTML = d ? (previewMode === 'card' ? cardHtml(d) : modalHtml(d)) : '';
+        }
+
+        function renderPreview() {
+            renderPending();
+            if (!previewOpen) return;
+            var f = $('previewFrame');
+            var key = lang + '|' + previewMode;
+            if (frameKey !== key) {
+                // 只有換語言／模式才重寫整份文件；打字時只走 paintFrame，不重載所以不會閃
+                frameKey = key;
+                var doc2 = f.contentDocument;
+                if (doc2) writeFrameSkeleton(doc2);
+            }
+            paintFrame();
+            updateSizeInfo();
+        }
+
+        function bandName(w) {
+            for (var i = 0; i < BREAKPOINTS.length; i++) if (w <= BREAKPOINTS[i].max) return BREAKPOINTS[i].name;
+            return '';
+        }
+        function updateSizeInfo() {
+            if (!previewOpen) return;
+            var wrap = $('frameWrap');
+            var w = wrap ? (wrap.clientWidth || (geom ? geom.w : 0)) : 0;
+            $('sizeInfo').textContent = w + 'px · ' + bandName(w);
+        }
+
+        function setPreview(m) {
+            previewMode = m;
+            $('pvCard').className = m === 'card' ? 'active' : '';
+            $('pvModal').className = m === 'modal' ? 'active' : '';
+            saveUi();
+            renderPreview();
+        }
+
+        function renderPending() {
+            var box = $('pendingBox');
+            var used = {};
+            ['CN', 'EN'].forEach(function (l) {
+                store[l].forEach(function (d) { if (localImages[d.image]) used[d.image] = 1; });
+            });
+            var names = Object.keys(used);
+            if (!names.length) { box.innerHTML = ''; return; }
+            box.innerHTML = '<b>還沒上傳的照片（' + names.length + ' 張）</b><ul>' +
+                names.map(function (n) { return '<li>' + esc(n.split('/').pop()) + '</li>'; }).join('') + '</ul>';
+        }
+
+        // ===== 懸浮視窗：位置與尺寸 =====
+        function clampGeom(g) {
+            var vw = window.innerWidth, vh = window.innerHeight;
+            var out = {
+                w: Math.max(MIN_W, Math.min(g.w, vw - 8)),
+                h: Math.max(MIN_H, Math.min(g.h, vh - 8))
+            };
+            out.left = Math.max(0, Math.min(g.left, vw - out.w));
+            out.top = Math.max(0, Math.min(g.top, vh - out.h));
+            return out;
+        }
+        function applyGeom() {
+            var p = $('previewPanel');
+            p.style.left = geom.left + 'px';
+            p.style.top = geom.top + 'px';
+            p.style.width = geom.w + 'px';
+            p.style.height = geom.h + 'px';
+            p.style.right = 'auto';
+            p.style.bottom = 'auto';
+            updateSizeInfo();
+        }
+        function setGeom(g) {
+            geom = clampGeom(g);
+            applyGeom();
+            return geom;
+        }
+        function centerPanel() {
+            var w = Math.min(760, window.innerWidth - 40);
+            var h = Math.min(560, window.innerHeight - 40);
+            return setGeom({ w: w, h: h, left: (window.innerWidth - w) / 2, top: (window.innerHeight - h) / 2 });
+        }
+        // dir 由 n/s/e/w 組成，例如 'se' 是右下角
+        function resizeFrom(base, dir, dx, dy) {
+            var g = { left: base.left, top: base.top, w: base.w, h: base.h };
+            if (dir.indexOf('e') !== -1) g.w = base.w + dx;
+            if (dir.indexOf('w') !== -1) {
+                g.w = Math.max(MIN_W, Math.min(base.w - dx, window.innerWidth - 8));
+                g.left = base.left + (base.w - g.w);
+            }
+            if (dir.indexOf('s') !== -1) g.h = base.h + dy;
+            if (dir.indexOf('n') !== -1) {
+                g.h = Math.max(MIN_H, Math.min(base.h - dy, window.innerHeight - 8));
+                g.top = base.top + (base.h - g.h);
+            }
+            return setGeom(g);
+        }
+
+        // 用 Pointer Capture：滑鼠移到 iframe 上方時事件不會被搶走，
+        // 拖曳才不會中途斷掉、也不會卡在拖曳狀態。
+        function bindPointerDrag(el, onStart, onMove) {
+            if (!el || !el.addEventListener) return;
+            el.addEventListener('pointerdown', function (e) {
+                if (e.button !== 0) return;
+                if (e.target.closest && e.target.closest('button')) return;
+                var panel = $('previewPanel');
+                var startX = e.clientX, startY = e.clientY;
+                var base = onStart();
+                panel.classList.add('busy');
+                try { el.setPointerCapture(e.pointerId); } catch (err) { }
+
+                function move(ev) { onMove(base, ev.clientX - startX, ev.clientY - startY); }
+                function end(ev) {
+                    el.removeEventListener('pointermove', move);
+                    el.removeEventListener('pointerup', end);
+                    el.removeEventListener('pointercancel', end);
+                    try { el.releasePointerCapture(ev.pointerId); } catch (err) { }
+                    panel.classList.remove('busy');
+                    saveUi();
+                }
+                el.addEventListener('pointermove', move);
+                el.addEventListener('pointerup', end);
+                el.addEventListener('pointercancel', end);
+                e.preventDefault();
+            });
+        }
+
+        function initPanelInteractions() {
+            bindPointerDrag($('previewHandle'),
+                function () { return { left: geom.left, top: geom.top, w: geom.w, h: geom.h }; },
+                function (base, dx, dy) {
+                    setGeom({ left: base.left + dx, top: base.top + dy, w: base.w, h: base.h });
+                });
+
+            var handles = document.querySelectorAll('#previewPanel .rz');
+            for (var i = 0; i < handles.length; i++) {
+                (function (el) {
+                    var dir = el.getAttribute('data-dir');
+                    bindPointerDrag(el,
+                        function () { return { left: geom.left, top: geom.top, w: geom.w, h: geom.h }; },
+                        function (base, dx, dy) { resizeFrom(base, dir, dx, dy); });
+                })(handles[i]);
+            }
+
+            window.addEventListener('resize', function () {
+                if (geom) setGeom(geom);
+            });
+        }
+
+        function togglePreviewPanel() {
+            previewOpen = !previewOpen;
+            var p = $('previewPanel');
+            p.classList.toggle('hidden', !previewOpen);
+            $('pvShow').textContent = previewOpen ? '關閉預覽' : '預覽';
+            $('pvShow').className = previewOpen ? 'on' : '';
+            if (previewOpen) {
+                if (!geom) centerPanel(); else applyGeom();
+                frameKey = '';
+                renderPreview();
+            }
+            saveUi();
+        }
+
+        function saveUi() {
+            try {
+                localStorage.setItem(UI_KEY, JSON.stringify({ geom: geom, mode: previewMode }));
+            } catch (e) { }
+        }
+        function restoreUi() {
+            // 預覽一律從關閉開始；沒有存過位置就會出現在畫面正中
+            try {
+                var raw = localStorage.getItem(UI_KEY);
+                if (!raw) return;
+                var u = JSON.parse(raw);
+                if (u.geom && typeof u.geom.w === 'number') geom = clampGeom(u.geom);
+                if (u.mode === 'modal') previewMode = 'modal';
+            } catch (e) { }
+        }
+
+        // ===== 檢查 + 下載 =====
+        function validate(l) {
+            var problems = [];
+            store[l].forEach(function (d, i) {
+                var where = '第 ' + (i + 1) + ' 道「' + ((d.name || '未命名').replace(/\n/g, ' ')) + '」';
+                if (!d.name || !d.name.trim()) problems.push(where + '：沒有名稱');
+                if (!d.price || !d.price.trim()) problems.push(where + '：沒有價格');
+                if (!d.image || !d.image.trim()) problems.push(where + '：沒有照片');
+                else if (d.image.indexOf('/imgs/') !== 0) problems.push(where + '：照片路徑要以 /imgs/ 開頭');
+                if (d.code && !d.color) problems.push(where + '：有標籤文字但沒有顏色');
+            });
+            return problems;
+        }
+
+        function download() {
+            var l = lang;
+            if (!store[l].length) { alert('目前這個語言沒有任何套餐，不能下載。'); return; }
+            var problems = validate(l);
+            if (problems.length) {
+                if (!confirm('發現 ' + problems.length + ' 個問題：\n\n' + problems.slice(0, 10).join('\n') +
+                    (problems.length > 10 ? '\n…還有 ' + (problems.length - 10) + ' 個' : '') +
+                    '\n\n還是要下載嗎？')) return;
+            }
+            // 只輸出網站會用到的欄位，順序與現有檔案一致，讓 diff 乾淨
+            var out = store[l].map(function (d) {
+                return {
+                    code: d.code || '',
+                    color: d.color || COLORS[0].v,
+                    name: d.name || '',
+                    price: d.price || '',
+                    text1: d.text1 || '',
+                    text2: d.text2 || '',
+                    text3: d.text3 || '',
+                    image: d.image || '',
+                    types: (d.types || []).map(Number)
+                };
+            });
+            var blob = new Blob([JSON.stringify(out, null, 4)], { type: 'application/json;charset=utf-8' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = FILES[l];
+            a.click();
+            setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+            banner('已下載 <b>' + FILES[l] + '</b>，請上傳到 GitHub 的 <code>Json</code> 資料夾覆蓋原檔' +
+                (Object.keys(localImages).length ? '，並把新照片放進 <code>' + IMG_DIR + '</code>' : '') +
+                '。上線後約 10 分鐘才會看到變更。');
+        }
+
+        // ===== 草稿 =====
+        function showDraftBanner() {
+            if (!pendingDraft) return;
+            var when = new Date(pendingDraft.at).toLocaleString('zh-TW');
+            banner('偵測到 <b>' + when + '</b> 還沒下載的草稿。' +
+                '<button onclick="restoreDraft()">還原草稿</button>' +
+                '<button onclick="discardDraft(true)">丟掉草稿</button>');
+        }
+        function restoreDraft() {
+            if (!pendingDraft) return;
+            store = pendingDraft.store;
+            if (!store.CN) store.CN = [];
+            if (!store.EN) store.EN = [];
+            sel = 0;
+            localImages = {};
+            customPrice = new WeakSet();
+            pendingDraft = null;
+            markDirty();
+            render();
+            hideBanner();
+        }
+        function discardDraft(fromButton) {
+            try { localStorage.removeItem(DRAFT_KEY); } catch (e) { }
+            pendingDraft = null;
+            if (fromButton) hideBanner();
+        }
+
+        // ===== 啟動 =====
+        window.onbeforeunload = function (e) {
+            if (dirty) { e.returnValue = '修改還沒下載，確定要離開嗎？'; return e.returnValue; }
+        };
+
+        (function init() {
+            try {
+                var raw = localStorage.getItem(DRAFT_KEY);
+                if (raw) {
+                    var draft = JSON.parse(raw);
+                    if (draft && draft.store) pendingDraft = draft;
+                }
+            } catch (e) { }
+            restoreUi();
+            setPreview(previewMode);
+            initPanelInteractions();
+            render();
+            if (pendingDraft) showDraftBanner();
+            loadRemote(false);
+        })();
+    </script>
+</body>
+
+</html>
