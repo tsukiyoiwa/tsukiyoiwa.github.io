@@ -88,3 +88,11 @@
         right: 20px;
     }
 }
+
+/* 條列:換行對齊內文,不壓到編號 */
+.content_p.list .li{display:flex;align-items:flex-start}
+.content_p.list .li.l1{padding-left:1.6em}
+.content_p.list .li.nomk.l0{padding-left:0}
+.content_p.list .li .mk{flex:0 0 1.6em}
+.content_p.list .li.note{font-size:.85em;color:#9a9a9a;margin:2px 0 8px;padding-left:1.88em}
+.content_box .content_p{line-height:1.6}
