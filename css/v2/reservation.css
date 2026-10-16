@@ -5,7 +5,8 @@
     top: -20px;
     height: 30vh;
     z-index: -1;
-    background-image: url('/imgs/home2.jpg');
+    background-image: url('/imgs/reservation_crab.jpg');
+    background-position: center 70%;
 }
 
 .mainBox {

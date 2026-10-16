@@ -43,20 +43,6 @@
     {
         "code": "",
         "color": "#FFA723",
-        "name": "Kaiseki with\nLive Ise Lobster &\nLive Snow Crab",
-        "price": "NT$11,200 per person",
-        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once -- live Snow Crab and live Ise lobster.\n\nTsukiyoiwa's signature live Snow Crab kaiseki, prepared tableside, is paired with the auspicious Ise lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
-        "text2": "Course Includes: Appetizer, Soup, Three dishes featuring live Ise lobster, Six dishes featuring live Snow Crab, and Dessert.",
-        "text3": "* Due to the need for tableside cooking preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If you have limited time, please inform us when making the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for at least two people. Each group must order the same set menu.",
-        "image": "/imgs/menu/newRatio/11200海老龍蝦+松葉蟹.jpg",
-        "types": [
-            1,
-            2
-        ]
-    },
-    {
-        "code": "",
-        "color": "#FFA723",
         "name": "Kaiseki with\nWagyu Beef &\nLive Snow Crab",
         "price": "NT$11,200 per person",
         "text1": "A dream combination of live Snow Crab kaiseki and the finest A5 Wagyu beef!\n\nWe have prepared the most premium ingredients from both land and sea! Coupled with the expertise of our chefs who will personally cook live Snow Crab and Japan's finest A5 Wagyu beef right in front of you, this is a dreamy and extravagant feast that will truly satisfy your taste buds.",
@@ -66,6 +52,20 @@
         "types": [
             1,
             4
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive Ise Lobster &\nLive Snow Crab",
+        "price": "NT$13,800 per person",
+        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once -- live Snow Crab and live Ise lobster.\n\nTsukiyoiwa's signature live Snow Crab kaiseki, prepared tableside, is paired with the auspicious Ise lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
+        "text2": "Course Includes: Appetizer, Soup, Three dishes featuring live Ise lobster, Six dishes featuring live Snow Crab, and Dessert.",
+        "text3": "* Due to the need for tableside cooking preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If you have limited time, please inform us when making the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for at least two people. Each group must order the same set menu.",
+        "image": "/imgs/menu/newRatio/11200海老龍蝦+松葉蟹.jpg",
+        "types": [
+            1,
+            2
         ]
     },
     {
@@ -84,20 +84,6 @@
     {
         "code": "",
         "color": "#FFA723",
-        "name": "Kaiseki with\nLive Ise Lobster &\nLive King Crab",
-        "price": "NT$12,800 per person",
-        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once -- live King Crab and Ise lobster.\n\nTsukiyoiwa's signature live King Crab kaiseki, prepared tableside cooking treatment, is paired with the auspicious lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
-        "text2": "Course Includes: Appetizer, Main Course, Three dishes featuring live Ise lobster, Six dishes featuring live King Crab, and Dessert.",
-        "text3": "* Due to the need for tableside cooking preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If you have limited time, please inform us when making the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for at least two people. Each group must order the same set menu.",
-        "image": "/imgs/menu/newRatio/12800海老龍蝦+鱈場蟹.jpg",
-        "types": [
-            3,
-            2
-        ]
-    },
-    {
-        "code": "",
-        "color": "#FFA723",
         "name": "Kaiseki with\nWagyu Beef &\nLive King Crab",
         "price": "NT$12,800 per person",
         "text1": "A dream combination of live King Crab kaiseki and the finest A5 Wagyu beef! We have prepared the most premium ingredients from both land and sea! Coupled with the expertise of our chefs who will personally prepare live King Crab and Japan's finest A5 Wagyu beef right in front of you, this is a dreamy and extravagant feast that will truly satisfy your taste buds.",
@@ -107,6 +93,20 @@
         "types": [
             3,
             4
+        ]
+    },
+    {
+        "code": "",
+        "color": "#FFA723",
+        "name": "Kaiseki with\nLive Ise Lobster &\nLive King Crab",
+        "price": "NT$13,800 per person",
+        "text1": "Experience the luxury of savoring two top-notch delicacies from the sea at once -- live King Crab and Ise lobster.\n\nTsukiyoiwa's signature live King Crab kaiseki, prepared tableside cooking treatment, is paired with the auspicious lobster, symbolizing longevity. This is a luxurious feast that one must indulge in at least once in a lifetime.",
+        "text2": "Course Includes: Appetizer, Main Course, Three dishes featuring live Ise lobster, Six dishes featuring live King Crab, and Dessert.",
+        "text3": "* Due to the need for tableside cooking preparation, this course is available for lunch at 11:30 am and 12:00 pm, and for dinner at 6:00 pm and 7:00 pm.\n\n* The chef will personally prepare the dishes inside the private room, and the dining time is approximately two and a half hours. If you have limited time, please inform us when making the reservation, and we will adjust the serving time accordingly.\n\n* If there are any allergies or dietary restrictions, please inform us when making the reservation.\n\n* Each set menu accepts reservations for at least two people. Each group must order the same set menu.",
+        "image": "/imgs/menu/newRatio/12800海老龍蝦+鱈場蟹.jpg",
+        "types": [
+            3,
+            2
         ]
     },
     {
